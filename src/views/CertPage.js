@@ -1,18 +1,28 @@
 import React from 'react'
 
 import { Helmet } from 'react-helmet'
-
+import PropTypes from 'prop-types'
 import SolidButton from '../components/solid-button'
 import PlaceCard from '../components/place-card'
 import './landing-page.css'
 import NavBar from '../components/NavBar'
+import { useState } from 'react';
+import Popup from '../components/Popup'
 
-const CertPage = () => {
+export default function CertPage() {
+  const [buttonPopup, setButtonPopup] = useState(false);
+
     return (
         <div className='background-image-cert-page'>
             <div>
                 <NavBar name="Cert"/>
             </div>
+          <h1>Popup here</h1>
+          <br></br>
+          <button onClick={() => setButtonPopup(true)}>Open Popup</button>
+          <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+            <h3>LOL</h3>
+            </Popup>
         <div className="landing-page-cards-container">
           <PlaceCard
             city="V1"
@@ -41,8 +51,5 @@ const CertPage = () => {
         </div>
             
         </div>
-
     )
-}
-
-export default CertPage
+  }
