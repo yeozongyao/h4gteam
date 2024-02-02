@@ -8,7 +8,7 @@ import SolidButton from '../components/solid-button'
 import PlaceCard from '../components/place-card'
 import './landing-page.css'
 import NavBar from '../components/NavBar'
-import { onSnapshot, collection } from 'firebase/firestore';
+import { onSnapshot, collection, setDoc, doc } from 'firebase/firestore';
 
 const Dot = ({ color }) => {
   const style = {
@@ -30,7 +30,17 @@ const LandingPage = () => {
     setColors(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
     ),
     []
-    );
+  );
+
+  // ADDING A NEW DATA - SETDOC
+  // Can just edit on Firebase
+  const handleNew = async () => {
+
+    const docRef = doc(db, "colors", "color001"); // third one is the document id
+    const payload = {name: "Black", value: '#000'};
+    await setDoc(docRef, payload);
+  }
+
         
    
     
@@ -47,7 +57,7 @@ const LandingPage = () => {
           <div className="landing-page-content-container">
             <h1 className="Heading landing-page-text09">Just be good</h1>
             
-            <button className="button">New</button>
+            <button className="button" onClick={handleNew}>New</button>
             <ul>
               <p>DATABASE ONES</p>
               {colors.map((color) => (
