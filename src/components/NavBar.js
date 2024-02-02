@@ -1,5 +1,6 @@
 import React from 'react';
 import './NavBar.css'; 
+import profileIcon from './profile.png';
 
 export default function NavBar({name}) {
 
@@ -20,6 +21,9 @@ export default function NavBar({name}) {
             </a>
             <a href="/admincert" className="landing-page-text">
               Admin Cert
+            </a>
+            <a href="/profiles" className="landing-page-text">
+              <img src={profileIcon} alt="Profile" />
             </a>
             </div>
           </div>
