@@ -1,12 +1,25 @@
-import React from "react";
+import React from 'react'
 
 import { Helmet } from "react-helmet";
 
 import SolidButton from '../components/solid-button'
 import PlaceCard from '../components/place-card'
 import './landing-page.css'
+import NavBar from '../components/NavBar'
 
 const LandingPage = () => {
+  const [colors, setColors] = useState([{name: "Loading..."}]);
+  console.log(colors);
+  useEffect(
+    () => onSnapshot(collection(db, "colors"), (snapshot) => 
+    setColors(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    ),
+    []
+    );
+        
+   
+    
+  
   return (
     <div className="landing-page-container">
       <Helmet>
@@ -115,10 +128,29 @@ const LandingPage = () => {
         </nav>
         <div className="landing-page-hero">
           <div className="landing-page-content-container">
-            <h1 className="Heading landing-page-text09">Book an exclusive</h1>
-            <h2 className="Subheading landing-page-subheading">
-              home for your personal travel
-            </h2>
+            <h1 className="Heading landing-page-text09">Just be good</h1>
+            
+            <button className="button">New</button>
+            <ul>
+              <p>DATABASE ONES</p>
+              {colors.map((color) => (
+                <li key={color.id}>
+                  <a href="#">edit</a> <Dot color={color.value} /> {color.name}
+                </li>
+              ))}
+              
+              <p>HARDCODED ONESSS</p>
+              
+              <li>
+                <a href="#">edit</a> <Dot color="#f00" /> Red
+              </li>
+              <li>
+                <a href="#">edit</a> <Dot color="#0f0" /> Green
+              </li>
+              <li>
+                <a href="#">edit</a> <Dot color="#00f" /> Blue
+              </li>
+            </ul>
             <span className="landing-page-text10">
               <span>
                 Each property is hand-picked,
