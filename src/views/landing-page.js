@@ -40,10 +40,7 @@ const LandingPage = () => {
     const payload = {name: "Black", value: '#000'};
     await setDoc(docRef, payload);
   }
-
-        
    
-    
   
   return (
     <div className="landing-page-container">
@@ -51,7 +48,7 @@ const LandingPage = () => {
         <title>Travel Agency</title>
         <meta property="og:title" content="Travel Agency" />
       </Helmet>
-      <NavBar/>
+      <NavBar name="Homepage"/>
       <div className="landing-page-top-container">
         <div className="landing-page-hero">
           <div className="landing-page-content-container">

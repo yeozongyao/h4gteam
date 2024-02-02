@@ -7,11 +7,11 @@ import PlaceCard from '../components/place-card'
 import './landing-page.css'
 import NavBar from '../components/NavBar'
 
-const ActivitiesPage = () => {
+const CertPage = () => {
     return (
-        <div>
-            <div className='background-image-activites-page'>
-                <NavBar name = "Activities" />
+        <div className='background-image-cert-page'>
+            <div>
+                <NavBar name="Cert"/>
             </div>
         <div className="landing-page-cards-container">
           <PlaceCard
@@ -45,4 +45,4 @@ const ActivitiesPage = () => {
     )
 }
 
-export default ActivitiesPage
+export default CertPage

@@ -6,16 +6,39 @@
   align-items: center;
   flex-direction: column;
 }
-.landing-page-top-container {
+.landing-page-top-container-home-edition {
   width: 100%;
   height: 600px;
   display: flex;
   align-items: center;
   flex-direction: column;
   background-size: cover;
+  background-position: 0% 40%;
   background-image: url("https://images.unsplash.com/photo-1484627147104-f5197bcd6651?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=1000");
+}
+
+.landing-page-top-container-navbar-edition {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-size: cover;
   background-position: 0% 40%;
 }
+
+.background-image-activites-page{
+  background-color: black;
+  background-image: url("https://i0.wp.com/communitytechnetwork.org/wp-content/uploads/Volunteer_kate1.png?fit=800%2C600&ssl=1");
+}
+
+.background-image-cert-page{
+  background-color: black;
+  height: 300px;
+  background-image: url("https://t3.ftcdn.net/jpg/05/03/22/62/360_F_503226239_HgWFqYG2dlPI33wg3n1TYVtbQFXdUYQI.jpg");
+}
+
+
 .landing-page-navbar {
   width: 100%;
   display: flex;
