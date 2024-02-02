@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 
-import { Helmet } from 'react-helmet'
+import { Helmet } from "react-helmet";
 
-import SolidButton from '../components/solid-button'
-import PlaceCard from '../components/place-card'
-import './landing-page.css'
+import SolidButton from "../components/solid-button";
+import PlaceCard from "../components/place-card";
+import "./landing-page.css";
 
 const LandingPage = (props) => {
   return (
@@ -64,7 +64,7 @@ const LandingPage = (props) => {
                 Follow us on
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: ' ',
+                    __html: " ",
                   }}
                 />
               </span>
@@ -123,7 +123,7 @@ const LandingPage = (props) => {
                 Each property is hand-picked,
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: ' ',
+                    __html: " ",
                   }}
                 />
               </span>
@@ -202,7 +202,7 @@ const LandingPage = (props) => {
                 Summer holiday
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: ' ',
+                    __html: " ",
                   }}
                 />
               </a>
@@ -247,7 +247,7 @@ const LandingPage = (props) => {
               Follow us on
               <span
                 dangerouslySetInnerHTML={{
-                  __html: ' ',
+                  __html: " ",
                 }}
               />
             </span>
@@ -296,7 +296,7 @@ const LandingPage = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;
