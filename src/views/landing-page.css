@@ -1,3 +1,18 @@
+.newbutton {
+  font-size: 40px;
+}
+
+.querydeletebutton {
+  font-size: 40px;
+}
+
+.editbutton {
+  font-size: 30px;
+}
+
+.deletebutton {
+  font-size: 30px;
+}
 .landing-page-container {
   width: 100%;
   height: auto;

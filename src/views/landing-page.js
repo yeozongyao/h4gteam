@@ -9,9 +9,7 @@ import PlaceCard from '../components/place-card'
 import './landing-page.css'
 import NavBar from '../components/NavBar'
 import { onSnapshot, collection, addDoc } from 'firebase/firestore';
-import { handleNew } from  "../util"
-import { handleEdit } from "../util"
-
+import { handleNew, handleEdit, handleDelete, handleQueryDelete } from  "../util"
 
 const Dot = ({ color }) => {
   const style = {
@@ -49,14 +47,14 @@ const LandingPage = () => {
           <div className="landing-page-content-container">
             <h1 className="Heading landing-page-text09">Just be good</h1>
             
-            <button className="button" onClick={handleNew}>New</button>
+            <button className="newbutton" onClick={handleNew}>New</button>
+            <button className="querydeletebutton" onClick={handleQueryDelete}>Query Delete</button>
             <ul>
               <p>DATABASE ONES</p>
               {colors.map((color) => (
                 <li key={color.id}>
-                  <a href="#" onClick={() => handleEdit(color.id)}>
-                    edit{" "}
-                  </a> 
+                  <button className="editbutton" onClick={() => handleEdit(color.id)}>edit</button>
+                  <button className="deletebutton" onClick={() => handleDelete(color.id)}>delete</button>
                   <Dot color={color.value} /> {color.name}
                 </li>
               ))}

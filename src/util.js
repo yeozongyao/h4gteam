@@ -22,3 +22,26 @@ export const handleEdit = async (id) => {
     const payload = { name, value };
     setDoc(docRef, payload);
 };
+
+// DELETING A DOCUMENT - deleteDoc
+export const handleDelete = async (id) => {
+    const docRef = doc(db, "colors", id);
+    await deleteDoc(docRef);
+};
+
+// DELETING WITH QUERY - getDocs
+export const handleQueryDelete = async (id) => {
+    const userInputName = prompt("Enter color name");
+    const collectionRef = collection(db, "colors"); // 1.db 2.name of collection
+    const q = query(collectionRef, where("name", "==", userInputName)); // query criteria
+    
+    const snapshot = await getDocs(q);
+    const results = snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
+    results.forEach(async result => {
+        const docRef = doc(result.id);
+        await deleteDoc(docRef);
+    })
+    
+    console.log(snapshot);
+
+};
