@@ -8,7 +8,10 @@ import SolidButton from '../components/solid-button'
 import PlaceCard from '../components/place-card'
 import './landing-page.css'
 import NavBar from '../components/NavBar'
-import { onSnapshot, collection, setDoc, doc } from 'firebase/firestore';
+import { onSnapshot, collection, addDoc } from 'firebase/firestore';
+import { handleNew } from  "../util"
+import { handleEdit } from "../util"
+
 
 const Dot = ({ color }) => {
   const style = {
@@ -32,18 +35,7 @@ const LandingPage = () => {
     []
   );
 
-  // ADDING A NEW DATA - SETDOC
-  // Can just edit on Firebase
-  const handleNew = async () => {
-
-    const docRef = doc(db, "colors", "color001"); // third one is the document id
-    const payload = {name: "Black", value: '#000'};
-    await setDoc(docRef, payload);
-  }
-
-        
-   
-    
+  
   
   return (
     <div className="landing-page-container">
@@ -62,7 +54,10 @@ const LandingPage = () => {
               <p>DATABASE ONES</p>
               {colors.map((color) => (
                 <li key={color.id}>
-                  <a href="#">edit</a> <Dot color={color.value} /> {color.name}
+                  <a href="#" onClick={() => handleEdit(color.id)}>
+                    edit{" "}
+                  </a> 
+                  <Dot color={color.value} /> {color.name}
                 </li>
               ))}
               
