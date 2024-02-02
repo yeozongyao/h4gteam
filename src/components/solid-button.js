@@ -21,8 +21,4 @@ SolidButton.defaultProps = {
 SolidButton.propTypes = {
   button: PropTypes.string,
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 89f5da5f9ec5dd0271f81491887a00c59f74626c
 export default SolidButton

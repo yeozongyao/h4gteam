@@ -7,24 +7,15 @@ import PlaceCard from '../components/place-card'
 import './landing-page.css'
 import NavBar from '../components/NavBar'
 
-<<<<<<< HEAD
 const LandingPage = () => {
-=======
-const LandingPage = (props) => {
->>>>>>> 89f5da5f9ec5dd0271f81491887a00c59f74626c
   return (
     <div className="landing-page-container">
       <Helmet>
         <title>Travel Agency</title>
         <meta property="og:title" content="Travel Agency" />
       </Helmet>
-<<<<<<< HEAD
       <NavBar/>
       <div className="landing-page-top-container">
-=======
-      <div className="landing-page-top-container">
-        <NavBar/>
->>>>>>> 89f5da5f9ec5dd0271f81491887a00c59f74626c
         <div className="landing-page-hero">
           <div className="landing-page-content-container">
             <h1 className="Heading landing-page-text09">Book an exclusive</h1>

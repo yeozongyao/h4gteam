@@ -3,21 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@craco/craco": "^7.1.0",
     "prop-types": "15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0"
-=======
-    "@craco/craco": "^7.0.0-alpha.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^5.2.0",
-    "react-helmet": "^6.1.0",
-    "prop-types": "15.7.2"
->>>>>>> 89f5da5f9ec5dd0271f81491887a00c59f74626c
   },
   "scripts": {
     "start": "craco start",
@@ -43,8 +34,4 @@
   "devDependencies": {
     "react-scripts": "^5.0.1"
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 89f5da5f9ec5dd0271f81491887a00c59f74626c
