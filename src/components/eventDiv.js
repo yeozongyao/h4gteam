@@ -3,27 +3,29 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import OutlineButton from './outline-button'
-import './place-card.css'
+import './eventDiv.css'
 import Popup from './Popup.js'
 import { useState } from 'react';
 
 const EventDiv = (props) => {
   const [buttonPopup, setButtonPopup] = useState(false);
   return (
-    <div className="place-card-container">
+    <div className="eventDiv-container">
+      <div className="eventDiv-container1">
       <img
         alt={props.imageAlt}
         src={props.image}
-        className="place-card-image"
+        className="Event-div-image"
       />
-      <div className="place-card-container1">
-        <span className="place-card-text">{props.city}</span>
-        <span className="place-card-text1">{props.description}</span>
+        <span className="eventDiv-text">{props.city}</span>
+        <span className="eventDiv-text1">{props.description}</span>
+        <div className='Event-Button'>
         <button className='button-40'onClick={() => setButtonPopup(true)}>Open Popup</button>
           <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
             <h3>LOL</h3>
             {props.displayData}
             </Popup>
+        </div>
       </div>
     </div>
   )
