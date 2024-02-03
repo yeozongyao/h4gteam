@@ -15,6 +15,7 @@ import CertPage from './views/CertPage'
 import ProfilesPage from './views/profilespage'
 import AdminCert from './views/admin-cert'
 import AdminEvents from './views/admin-events'
+import AdminAddEvents from './views/admin-add-events'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
         <Route component={AdminCert} exact path="/admincert" />
         <Route component={AdminEvents} exact path="/adminevents" />
         <Route component={ProfilesPage} exact path="/profiles" />
+        <Route component={AdminAddEvents} exact path="/addevents" />
         <Route component={NotFound} path="**" />
 
         <Redirect to="**" />

@@ -249,6 +249,7 @@
   margin-bottom: var(--dl-space-space-doubleunit);
   flex-direction: row;
   justify-content: space-between;
+  background-color: black;
 }
 .landing-page-footer {
   color: var(--dl-color-gray-white);

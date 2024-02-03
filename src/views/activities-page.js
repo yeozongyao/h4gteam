@@ -1,43 +1,36 @@
 import React from 'react'
-
-import { Helmet } from 'react-helmet'
-
-import SolidButton from '../components/solid-button'
+import { useEffect, useState } from "react";
+import db from "../firebase";
 import PlaceCard from '../components/place-card'
 import '../css/landing-page.css'
 import NavBar from '../components/NavBar'
+import { handleNewEvents, handleEditEvents, handleDeleteEvents, handleQueryDeleteEvents } from  "../UtilEvents"
+import { onSnapshot, collection, addDoc } from 'firebase/firestore';
 
 const ActivitiesPage = () => {
+
+    const [event, setEvents] = useState([{name: "Loading..."}]);
+    useEffect(
+      () => onSnapshot(collection(db, "EventsTest"), (snapshot) => 
+      setEvents(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
+      ),
+      []
+    );
+
     return (
         <div>
             <div className='background-image-activites-page'>
                 <NavBar name = "Activities" />
             </div>
-        <div className="landing-page-cards-container">
-          <PlaceCard
-            city="V1"
-            image="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
+        <div>
+        
+        {event.map((event) => (
+                <div className='landing-page-cards-container' key={event.id}>
                     <PlaceCard
-            city="V2"
-            image="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
-                    <PlaceCard
-            city="V3"
-            image="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
-                    <PlaceCard
-            city="V4"
-            image="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
-                    <PlaceCard
-            city="V5"
-            image="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
-                              <PlaceCard
-            city="V6"
-            image="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
+                        city={event.name}
+                    ></PlaceCard>
+                </div>
+              ))}
         </div>
             
         </div>

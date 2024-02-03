@@ -25,6 +25,9 @@ export default function NavBar({name}) {
             <a href="/adminevents" className="landing-page-text">
               Admin Events
             </a>
+            <a href="/addevents" className="landing-page-text">
+              Add Events 
+            </a>
             <a href="/profiles" className="landing-page-text">
               <img src={profileIcon} alt="Profile" />
             </a>
