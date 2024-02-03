@@ -4,11 +4,25 @@ import { useEffect, useState } from "react";
 import db from "../firebase";
 import { Helmet } from "react-helmet";
 
+import { Helmet } from "react-helmet";
+
 import SolidButton from "../components/solid-button";
 import PlaceCard from "../components/place-card";
 import "./landing-page.css";
 import NavBar from "../components/NavBar";
-import { onSnapshot, collection, setDoc, doc } from "firebase/firestore";
+import { onSnapshot, collection } from "firebase/firestore";
+
+const Dot = ({ color }) => {
+  const style = {
+    height: 25,
+    width: 25,
+    margin: "0px 10px",
+    backgroundColor: color,
+    borderRadius: "50%",
+    display: "inline-block",
+  };
+  return <span style={style}></span>;
+};
 
 const LandingPage = () => {
   const [colors, setColors] = useState([{ name: "Loading..." }]);
@@ -136,7 +150,19 @@ const LandingPage = () => {
               <p>DATABASE ONES</p>
               {colors.map((color) => (
                 <li key={color.id}>
-                  <a href="#">edit</a> <Dot color={color.value} /> {color.name}
+                  <button
+                    className="editbutton"
+                    onClick={() => handleEdit(color.id)}
+                  >
+                    edit
+                  </button>
+                  <button
+                    className="deletebutton"
+                    onClick={() => handleDelete(color.id)}
+                  >
+                    delete
+                  </button>
+                  <Dot color={color.value} /> {color.name}
                 </li>
               ))}
 

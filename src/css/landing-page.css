@@ -1,9 +1,9 @@
 .newbutton {
-  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  font-size: 40px;
 }
 
 .querydeletebutton {
-  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  font-size: 40px;
 }
 
 .editbutton {
@@ -249,7 +249,6 @@
   margin-bottom: var(--dl-space-space-doubleunit);
   flex-direction: row;
   justify-content: space-between;
-  background-color: black;
 }
 .landing-page-footer {
   color: var(--dl-color-gray-white);
