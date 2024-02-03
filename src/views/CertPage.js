@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import SolidButton from '../components/solid-button'
 import PlaceCard from '../components/place-card'
-import './landing-page.css'
+import '../css/landing-page.css'
 import NavBar from '../components/NavBar'
 import { useState } from 'react';
 import Popup from '../components/Popup'

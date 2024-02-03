@@ -1,6 +1,6 @@
 // ProfilesPage.jsx
 import React, { useState } from 'react';
-import './profilespage.css'; // Ensure this is the correct path to your CSS file
+import '../css/profilespage.css'; // Ensure this is the correct path to your CSS file
 import NavBar from '../components/NavBar';
 
 const ProfilesPage = () => {
