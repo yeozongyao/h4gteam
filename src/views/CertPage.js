@@ -17,24 +17,21 @@ export default function CertPage() {
             <div>
                 <NavBar name="Cert"/>
             </div>
-          <h1>Popup here</h1>
-          <br></br>
-          <button onClick={() => setButtonPopup(true)}>Open Popup</button>
-          <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-            <h3>LOL</h3>
-            </Popup>
         <div className="landing-page-cards-container">
           <PlaceCard
             city="V1"
             image="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
+            displayData = "Test1"
           ></PlaceCard>
                     <PlaceCard
             city="V2"
             image="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
+            displayData = "Test2"
           ></PlaceCard>
                     <PlaceCard
             city="V3"
             image="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
+            displayData = "Test3"
           ></PlaceCard>
                     <PlaceCard
             city="V4"

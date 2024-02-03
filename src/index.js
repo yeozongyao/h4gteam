@@ -13,6 +13,7 @@ import NotFound from './views/not-found'
 import ActivitiesPage from './views/activities-page'
 import CertPage from './views/CertPage'
 import ProfilesPage from './views/profilespage'
+import AdminCert from './views/admin-cert'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <Route component={LandingPage} exact path="/" />
         <Route component={ActivitiesPage} exact path="/act" />
         <Route component={CertPage} exact path="/cert" />
+        <Route component={AdminCert} exact path="/admincert" />
         <Route component={ProfilesPage} exact path="/profiles" />
         <Route component={NotFound} path="**" />
 
