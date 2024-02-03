@@ -1,32 +1,33 @@
-import React from 'react'
+import React from "react";
 
+import { useEffect, useState } from "react";
+import db from "../firebase";
 import { Helmet } from "react-helmet";
 
-import SolidButton from '../components/solid-button'
-import PlaceCard from '../components/place-card'
-import './landing-page.css'
-import NavBar from '../components/NavBar'
+import SolidButton from "../components/solid-button";
+import PlaceCard from "../components/place-card";
+import "./landing-page.css";
+import NavBar from "../components/NavBar";
+import { onSnapshot, collection, setDoc, doc } from "firebase/firestore";
 
 const LandingPage = () => {
-  const [colors, setColors] = useState([{name: "Loading..."}]);
+  const [colors, setColors] = useState([{ name: "Loading..." }]);
   console.log(colors);
   useEffect(
-    () => onSnapshot(collection(db, "colors"), (snapshot) => 
-    setColors(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    ),
+    () =>
+      onSnapshot(collection(db, "colors"), (snapshot) =>
+        setColors(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      ),
     []
-    );
-        
-   
-    
-  
+  );
+
   return (
     <div className="landing-page-container">
       <Helmet>
         <title>Travel Agency</title>
         <meta property="og:title" content="Travel Agency" />
       </Helmet>
-      <NavBar/>
+      <NavBar />
       <div className="landing-page-top-container">
         <nav data-role="Header" className="landing-page-navbar">
           <h1>Travel</h1>
@@ -78,7 +79,7 @@ const LandingPage = () => {
                 Follow us on
                 <span
                   dangerouslySetInnerHTML={{
-                    __html: ' ',
+                    __html: " ",
                   }}
                 />
               </span>
@@ -129,7 +130,7 @@ const LandingPage = () => {
         <div className="landing-page-hero">
           <div className="landing-page-content-container">
             <h1 className="Heading landing-page-text09">Just be good</h1>
-            
+
             <button className="button">New</button>
             <ul>
               <p>DATABASE ONES</p>
@@ -138,9 +139,9 @@ const LandingPage = () => {
                   <a href="#">edit</a> <Dot color={color.value} /> {color.name}
                 </li>
               ))}
-              
+
               <p>HARDCODED ONESSS</p>
-              
+
               <li>
                 <a href="#">edit</a> <Dot color="#f00" /> Red
               </li>
