@@ -1,4 +1,4 @@
-import { onSnapshot, collection, addDoc, doc, setDoc } from 'firebase/firestore';
+import { onSnapshot, collection, addDoc, doc, setDoc, query, where, getDocs, deleteDoc } from 'firebase/firestore';
 import { useEffect, useState } from "react";
 import db from "./firebase";
 
@@ -38,7 +38,7 @@ export const handleQueryDelete = async (id) => {
     const snapshot = await getDocs(q);
     const results = snapshot.docs.map((doc) => ({...doc.data(), id: doc.id}));
     results.forEach(async result => {
-        const docRef = doc(result.id);
+        const docRef = doc(db, "colors", result.id); // 1.db 2.collection 3.id
         await deleteDoc(docRef);
     })
     
