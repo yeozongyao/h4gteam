@@ -1,10 +1,12 @@
 // ProfilesPage.jsx
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { collection, addDoc, doc, setDoc, query, where, getDocs, getFirestore } from 'firebase/firestore';
 import '../css/profilespage.css'; // Ensure this is the correct path to your CSS file
 import NavBar from '../components/NavBar';
 
 const ProfilesPage = () => {
+  const history = useHistory();
   const [profile, setProfile] = useState({
     firstName: '',
     lastName: '',
@@ -40,7 +42,9 @@ const ProfilesPage = () => {
     try {
       const userCollectionRef = collection(db, "User");
       await addDoc(userCollectionRef, profile);
+      history.push('/');
       console.log('User profile added to database!');
+
     } catch (error) {
       console.error('Error adding user', error);
       throw error;
