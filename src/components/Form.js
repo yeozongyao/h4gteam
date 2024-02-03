@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection } from 'firebase/firestore';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Form, Button } from 'react-bootstrap';
 import db from '../firebase'
-
 
 function MyForm() {
   const [name, setName] = useState('');

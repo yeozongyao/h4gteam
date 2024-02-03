@@ -1,5 +1,6 @@
 // ProfilesPage.jsx
 import React, { useState } from 'react';
+import { collection, addDoc, doc, setDoc, query, where, getDocs, getFirestore } from 'firebase/firestore';
 import '../css/profilespage.css'; // Ensure this is the correct path to your CSS file
 import NavBar from '../components/NavBar';
 
@@ -33,8 +34,28 @@ const ProfilesPage = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleNewUser = async (profile) => {
+    const db = getFirestore();
+
+    try {
+      const userCollectionRef = collection(db, "User");
+      await addDoc(userCollectionRef, profile);
+      console.log('User profile added to database!');
+    } catch (error) {
+      console.error('Error adding user', error);
+      throw error;
+    }
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      await handleNewUser(profile);
+      console.log('User profile succesfully added!');
+    } catch (error) {
+      console.error('Error adding user profile: ', error);
+
+    }
     // Handle form submission logic here
     // This is where you would connect to Firebase or another database
   };
@@ -152,7 +173,7 @@ const ProfilesPage = () => {
               onChange={handleInputChange}
             />
           </div>
-          <button type="submit">Update Profile</button>
+          <button type="submit">Set Up Profile</button>
         </form>
       </div>
     </>
