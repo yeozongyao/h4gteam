@@ -7,7 +7,7 @@ import './place-card.css'
 import Popup from './Popup.js'
 import { useState } from 'react';
 
-const PlaceCard = (props) => {
+const EventDiv = (props) => {
   const [buttonPopup, setButtonPopup] = useState(false);
   return (
     <div className="place-card-container">
@@ -29,7 +29,7 @@ const PlaceCard = (props) => {
   )
 }
 
-PlaceCard.defaultProps = {
+EventDiv.defaultProps = {
   image:
     'https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=1000',
   imageAlt: 'image',
@@ -38,11 +38,11 @@ PlaceCard.defaultProps = {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.',
 }
 
-PlaceCard.propTypes = {
+EventDiv.propTypes = {
   image: PropTypes.string,
   imageAlt: PropTypes.string,
   city: PropTypes.string,
   description: PropTypes.string,
 }
 
-export default PlaceCard
+export default EventDiv
