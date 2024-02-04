@@ -1,37 +1,77 @@
-// ProfilesPage.jsx
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { collection, addDoc, doc, setDoc, query, where, getDocs, getFirestore } from 'firebase/firestore';
-import '../css/profilespage.css'; // Ensure this is the correct path to your CSS file
-import NavBar from '../components/NavBar';
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import {
+  collection,
+  addDoc,
+  doc,
+  setDoc,
+  query,
+  where,
+  getDocs,
+  getFirestore,
+} from "firebase/firestore";
+import "../css/profilespage.css"; // Ensure this is the correct path to your CSS file
+import NavBar from "../components/NavBar";
+import ViewProfilePage from "./viewprofile";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const ProfilesPage = () => {
   const history = useHistory();
   const [profile, setProfile] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    age: '',
-    sex: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    age: "",
+    sex: "",
     interests: [],
-    availability: ''
+    availability: "",
   });
+
+  useEffect(() => {
+    const auth = getAuth();
+
+    // Check if the user is authenticated
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is logged in, fetch and display existing profile
+        fetchExistingProfile(user.email);
+      } else {
+        // User is not logged in, you can redirect to the login page or handle it as needed
+        console.log("User is not logged in");
+        // history.push("/login"); // Uncomment and replace with your login route
+      }
+    });
+  }, [history]);
+  const fetchExistingProfile = async (email) => {
+    const db = getFirestore();
+
+    try {
+      const userCollectionRef = collection(db, "User");
+      const userQuery = query(userCollectionRef, where("email", "==", email));
+      const userSnapshot = await getDocs(userQuery);
+
+      if (!userSnapshot.empty) {
+        const existingProfile = userSnapshot.docs[0].data();
+        setProfile(existingProfile);
+      }
+    } catch (error) {
+      console.error("Error fetching existing user profile", error);
+    }
+  };
 
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
-    if (type === 'checkbox') {
-      // For handling checkboxes (interests)
-      setProfile(prevProfile => ({
+    if (type === "checkbox") {
+      setProfile((prevProfile) => ({
         ...prevProfile,
         [name]: prevProfile[name].includes(value)
-          ? prevProfile[name].filter(i => i !== value)
-          : [...prevProfile[name], value]
+          ? prevProfile[name].filter((i) => i !== value)
+          : [...prevProfile[name], value],
       }));
     } else {
-      // For handling other inputs
-      setProfile(prevProfile => ({
+      setProfile((prevProfile) => ({
         ...prevProfile,
-        [name]: value
+        [name]: value,
       }));
     }
   };
@@ -42,28 +82,72 @@ const ProfilesPage = () => {
     try {
       const userCollectionRef = collection(db, "User");
       await addDoc(userCollectionRef, profile);
-      history.push('/');
-      console.log('User profile added to database!');
-
+      history.push("/");
+      console.log("User profile added to database!");
     } catch (error) {
-      console.error('Error adding user', error);
+      console.error("Error adding user", error);
+      throw error;
+    }
+  };
+
+  const handleUpdateUser = async (profile) => {
+    const db = getFirestore();
+
+    try {
+      const userCollectionRef = collection(db, "User");
+      const userQuery = query(
+        userCollectionRef,
+        where("email", "==", profile.email)
+      );
+      const userSnapshot = await getDocs(userQuery);
+
+      if (!userSnapshot.empty) {
+        const userId = userSnapshot.docs[0].id;
+        const userDocRef = doc(db, "User", userId);
+        await setDoc(userDocRef, profile);
+        console.log("User profile updated in database!");
+        history.push("/");
+      }
+    } catch (error) {
+      console.error("Error updating user profile", error);
       throw error;
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      await handleNewUser(profile);
-      console.log('User profile succesfully added!');
-    } catch (error) {
-      console.error('Error adding user profile: ', error);
 
+    // Check if the user already exists in the database
+    const userExists = profile.email && (await doesUserExist(profile.email));
+
+    try {
+      if (userExists) {
+        // If user exists, ask if they want to update the profile
+        const confirmUpdate = window.confirm(
+          "A profile with this email already exists. Do you want to update the existing profile?"
+        );
+        if (confirmUpdate) {
+          await handleUpdateUser(profile);
+        } else {
+          console.log("User chose not to update the profile.");
+        }
+      } else {
+        // If user doesn't exist, add a new profile
+        await handleNewUser(profile);
+      }
+    } catch (error) {
+      console.error("Error handling user profile:", error);
     }
-    // Handle form submission logic here
-    // This is where you would connect to Firebase or another database
   };
 
+  const doesUserExist = async (email) => {
+    const db = getFirestore();
+    const userCollectionRef = collection(db, "User");
+    const userQuery = query(userCollectionRef, where("email", "==", email));
+    const userSnapshot = await getDocs(userQuery);
+
+    return !userSnapshot.empty;
+  };
   return (
     <>
       <NavBar />
@@ -131,7 +215,7 @@ const ProfilesPage = () => {
                 type="checkbox"
                 name="interests"
                 value="sports"
-                checked={profile.interests.includes('sports')}
+                checked={profile.interests.includes("sports")}
                 onChange={handleInputChange}
               />
               Sports
@@ -141,7 +225,7 @@ const ProfilesPage = () => {
                 type="checkbox"
                 name="interests"
                 value="cooking"
-                checked={profile.interests.includes('cooking')}
+                checked={profile.interests.includes("cooking")}
                 onChange={handleInputChange}
               />
               Cooking
@@ -151,7 +235,7 @@ const ProfilesPage = () => {
                 type="checkbox"
                 name="interests"
                 value="cleaning"
-                checked={profile.interests.includes('cleaning')}
+                checked={profile.interests.includes("cleaning")}
                 onChange={handleInputChange}
               />
               Cleaning
@@ -161,7 +245,7 @@ const ProfilesPage = () => {
                 type="checkbox"
                 name="interests"
                 value="teaching"
-                checked={profile.interests.includes('teaching')}
+                checked={profile.interests.includes("teaching")}
                 onChange={handleInputChange}
               />
               Teaching
