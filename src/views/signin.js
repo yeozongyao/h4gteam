@@ -15,11 +15,10 @@ export default function signin() {
     async function handleSignup() {
         setLoading(true);
         try {
-          await signup(emailRef.current.value, passwordRef.current.value);
-          // Successful sign up
-          history.push('/profiles');
-        } catch {
-            alert("Error!");
+            await signup(emailRef.current.value, passwordRef.current.value);
+            history.push("/profiles");
+        } catch (error) {
+            alert("try again");
         }
         setLoading(false);
     }
@@ -52,8 +51,8 @@ export default function signin() {
             <div>Currently logged in as: { currentUser?.email } </div> 
             
             <div id="fields">
-            <input className="input-1" ref={emailRef} placeholder="Email" />
-            <input className="input-1" ref={passwordRef} type="password" placeholder="Password" />
+            <input className="input-1" ref={emailRef} placeholder="Email" required/>
+            <input className="input-1" ref={passwordRef} type="password" placeholder="Password" required/>
 
             </div>
             <div className="buttonsaccount">

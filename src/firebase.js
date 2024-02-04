@@ -26,8 +26,24 @@ const analytics = getAnalytics(app);
 const auth = getAuth();
 const db = getFirestore(app);
 
-export function signup(email, password) {
-  createUserWithEmailAndPassword(auth, email, password);
+export async function signup(email, password) {
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+    alert("success");
+  } catch (error) {
+    alert(error);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const success = false;
+        if (success) {
+          resolve(data);
+        } else {
+          reject(error);
+        }
+      }, 1000);
+    });
+    
+  }
 }
 
 export function login(email, password) {
