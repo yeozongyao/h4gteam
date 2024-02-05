@@ -44,27 +44,28 @@ export default function signin() {
   }
 
   return (
-    <div id="main" className="signin-container">
-      <NavBar name="Account" />
+    <div className="signin-container">
+        <NavBar name="Account" />
+        
+        <div>Currently logged in as: {currentUser?.email} </div>
 
-      <div>Currently logged in as: {currentUser?.email} </div>
-
-      {!currentUser && (
-        <div id="fields">
-          <input
-            className="input-1"
-            ref={emailRef}
-            placeholder="Email"
-            required
-          />
-          <input
-            className="input-1"
-            ref={passwordRef}
-            type="password"
-            placeholder="Password"
-            required
-          />
-        </div>
+        <br></br>
+        {!currentUser && (
+            <div id="fields">
+                <input
+                  className="input-1"
+                  ref={emailRef}
+                  placeholder="Email"
+                  required
+                />
+                <input
+                  className="input-1"
+                  ref={passwordRef}
+                  type="password"
+                  placeholder="Password"
+                  required
+                />
+            </div>
       )}
 
       <div className="buttonsaccount">

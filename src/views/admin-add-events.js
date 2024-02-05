@@ -10,7 +10,7 @@ import MyForm from "../components/Form";
 const AdminAddEvents = () => {
   return (
     <div className="adminCert-main-div">
-      <NavBar name="Admin View Events Page" />
+      <NavBar name="Admin" />
       <div>
         <MyForm />
       </div>

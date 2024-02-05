@@ -6,7 +6,7 @@ import '../css/admin-cert.css'
 const AdminCert = () => {
     return (
         <div className='adminCert-main-div'>
-            <NavBar name = "Admin View Events Page"/>
+            <NavBar name = "Admin"/>
             <div className='admin-list-of-events'>
             <EventDiv city="Admin Cert 1" description="blank" ></EventDiv>
             <EventDiv city="Admin Cert 2" description="blanker"></EventDiv>
