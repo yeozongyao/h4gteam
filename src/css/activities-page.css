@@ -1,0 +1,16 @@
+.background-image-activites-page {
+    background-color: rgb(0, 0, 0);
+    background-image: url("https://i0.wp.com/communitytechnetwork.org/wp-content/uploads/Volunteer_kate1.png?fit=800%2C600&ssl=1");
+}
+
+.landing-page-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust if you want a different distribution */
+    gap: 20px; /* This creates space between the items */
+    max-width: 1000px;
+    margin: auto; /* Center the container in the page */
+  }
+  
+
+
