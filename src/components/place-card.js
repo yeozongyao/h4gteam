@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+
 import PropTypes from "prop-types";
+
+import OutlineButton from "./outline-button";
 import "./place-card.css";
 import Popup from "./Popup.js";
+import { useState } from "react";
+import CertificateDownloader from "../components/Certdownload";
 
 const PlaceCard = (props) => {
   const [buttonPopup, setButtonPopup] = useState(false);
+  const activityName = props.city;
   return (
     <div className="place-card-container">
       <img
@@ -31,6 +37,7 @@ const PlaceCard = (props) => {
           <h3>{props.city}</h3>
           <p>{props.description}</p>
           <span>Looking for: {props.eventPax} volunteers</span>
+          <CertificateDownloader activityName={activityName} />
         </Popup>
       </div>
     </div>

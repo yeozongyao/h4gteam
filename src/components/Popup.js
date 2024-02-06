@@ -25,16 +25,14 @@ function Popup(props) {
     <div className="popup">
       <div className="popup-inner">
         <button className="close-btn" onClick={() => props.setTrigger(false)}>
-          Close
+          close
         </button>
         {props.children}
-        {/* Button to enroll in the event */}
-        <button className="enroll-button" onClick={handleEnrollClick}>
-          Enroll in Event
-        </button>
       </div>
     </div>
-  ) : null;
+  ) : (
+    ""
+  );
 }
 
 Popup.propTypes = {
