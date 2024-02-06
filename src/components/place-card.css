@@ -28,9 +28,10 @@
   padding-bottom: var(--dl-space-space-halfunit);
 }
 .place-card-text1 {
-  font-size: 12px;
+  font-size: 15px;
   max-width: 250px;
   margin-bottom: var(--dl-space-space-doubleunit);
+  text-align: center;
 }
 @media(max-width: 767px) {
   .place-card-container {

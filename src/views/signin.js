@@ -48,7 +48,7 @@ export default function signin() {
 
   return (
     <div className="signin-container">
-        <NavBar name="Account" />
+        <NavBar name="Account" currentUser={currentUser} />
         
         <div>Currently logged in as: {currentUser?.email} </div>
 

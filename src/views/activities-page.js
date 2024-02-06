@@ -29,7 +29,7 @@ const ActivitiesPage = () => {
       {/* Ensure all PlaceCards are direct children of a single container */}
       <div className="landing-page-cards-container">
         {events.map((event) => (
-          <PlaceCard key={event.id} city={event.name} />
+          <PlaceCard key={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax}/>
         ))}
       </div>
     </div>
