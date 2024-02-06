@@ -10,6 +10,10 @@ function MyForm() {
   const [description, setDescription] = useState('');
   const [eventPax, setEventPax] = useState('');
   const [image, setImage] = useState('');
+  const [eventLocation, setEventLocation] = useState('');
+  const [eventStartDateTime, setEventStartDateTime]= useState('');
+  const [eventEndDateTime, setEventEndDateTime] = useState('');
+  const [eventOrg, setEventOrg] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -22,12 +26,20 @@ function MyForm() {
         description,
         eventPax,
         image,
+        eventLocation,
+        eventStartDateTime,
+        eventEndDateTime,
+        eventOrg,
       });
       alert('Event added successfully!');
       setName('');
       setDescription('');
       setEventPax('');
       setImage('');
+      setEventLocation('');
+      setEventStartDateTime('');
+      setEventEndDateTime('');
+      setEventOrg('');
     } catch (error) {
       console.error('Error adding event:', error);
       alert('An error occurred. Please try again.');
@@ -43,6 +55,18 @@ function MyForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Enter event name"
+          required
+        />
+      </Form.Group>
+
+      <Form.Group controlId="eventOrg">
+        <Form.Label>Event Organization:</Form.Label>
+        <Form.Control
+          type="text"
+          value={eventOrg}
+          onChange={(e) => setEventOrg(e.target.value)}
+          placeholder="Enter event Organization"
+          required
         />
       </Form.Group>
 
@@ -53,6 +77,40 @@ function MyForm() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Enter event description"
+          required
+        />
+      </Form.Group>
+
+      <Form.Group controlId="eventLocation">
+        <Form.Label>Event Location:</Form.Label>
+        <Form.Control
+          type="text"
+          value={eventLocation}
+          onChange={(e) => setEventLocation(e.target.value)}
+          placeholder="Enter event location"
+          required
+        />
+      </Form.Group>
+
+      <Form.Group controlId="eventStartDateTime">
+        <Form.Label>Event Start DateTime:</Form.Label>
+        <Form.Control
+          type="datetime-local"
+          value={eventStartDateTime}
+          onChange={(e) => setEventStartDateTime(e.target.value)}
+          placeholder="Enter event start datetime"
+          required
+        />
+      </Form.Group>
+
+      <Form.Group controlId="eventEndDateTime">
+        <Form.Label>Event End DateTime:</Form.Label>
+        <Form.Control
+          type="datetime-local"
+          value={eventEndDateTime}
+          onChange={(e) => setEventEndDateTime(e.target.value)}
+          placeholder="Enter event end datetime"
+          required
         />
       </Form.Group>
 
@@ -63,6 +121,7 @@ function MyForm() {
           value={eventPax}
           onChange={(e) => setEventPax(e.target.value)}
           placeholder="Enter event pax"
+          required
         />
       </Form.Group>
 
@@ -73,6 +132,7 @@ function MyForm() {
           value={image}
           onChange={(e) => setImage(e.target.value)}
           placeholder="Enter link to event image"
+          required
         />
       </Form.Group>
 

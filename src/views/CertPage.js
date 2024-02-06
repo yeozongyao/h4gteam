@@ -8,14 +8,15 @@ import '../css/landing-page.css'
 import NavBar from '../components/NavBar'
 import { useState } from 'react';
 import Popup from '../components/Popup'
+import { signup, useAuth, logout, login, } from "../firebase";
 
 export default function CertPage() {
   const [buttonPopup, setButtonPopup] = useState(false);
-
+  const currentUser = useAuth()
     return (
         <div className='background-image-cert-page'>
             <div>
-                <NavBar name="Cert" />
+                <NavBar name="Cert" currentUser={currentUser} />
             </div>
         <div className="landing-page-cards-container">
           <PlaceCard
