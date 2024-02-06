@@ -151,7 +151,7 @@ const ProfilesPage = () => {
   };
   return (
     <>
-      <NavBar name="Profile"/>
+      <NavBar name="Profile" />
       <div className="profile-page-container">
         <form className="profile-form" onSubmit={handleSubmit}>
           <div className="form-group">

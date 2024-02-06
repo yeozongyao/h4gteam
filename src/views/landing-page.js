@@ -45,7 +45,7 @@ const LandingPage = () => {
         <title>Hack4Good</title>
         <meta property="og:title" content="Travel Agency" />
       </Helmet>
-      <NavBar name="Home" />
+      <NavBar name="HackforGood"/>
       <div className="landing-page-top-container">
         <div className="landing-page-hero">
           <div className="landing-page-content-container">
