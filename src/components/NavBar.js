@@ -56,11 +56,7 @@ export default function NavBar({ name, currentUser }) {
                 <h1>{name}</h1>
                 <div className="landing-page-right-side">
                     <div className="landing-page-links-container">
-                        {!currentUser && (
-                                <a href="/admincert" className="landing-page-text">
-                                </a>
-                        )}
-                        {isAdmin && currentUser && (
+                        {isAdmin && (
                             <>
                                 <a href="/admincert" className="landing-page-text">
                                     Admin Cert
@@ -79,7 +75,7 @@ export default function NavBar({ name, currentUser }) {
                                 </a>
                             </>
                         )}
-                        {!isAdmin && currentUser && (
+                        {!isAdmin && (
                             <>
                                 <a href="/" className="landing-page-text">
                                     Home

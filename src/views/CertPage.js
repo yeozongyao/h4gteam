@@ -15,7 +15,7 @@ export default function CertPage() {
     return (
         <div className='background-image-cert-page'>
             <div>
-                <NavBar name="Cert"/>
+                <NavBar name="Cert" />
             </div>
         <div className="landing-page-cards-container">
           <PlaceCard
