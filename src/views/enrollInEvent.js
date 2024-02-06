@@ -18,7 +18,7 @@ const enrollInEvent = async (eventId, eventPax) => {
     }
 
     // Reference the user document in the "users" collection
-    // console.log(currentUser);
+    console.log(currentUser.uid);
     // const userDocRef = doc(db, "users", currentUser.uid);
 
     // // Update user profile with the enrolled event
