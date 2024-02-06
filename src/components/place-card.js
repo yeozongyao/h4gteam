@@ -6,9 +6,11 @@ import OutlineButton from './outline-button'
 import './place-card.css'
 import Popup from './Popup.js'
 import { useState } from 'react';
+import CertificateDownloader from '../components/Certdownload'
 
 const PlaceCard = (props) => {
   const [buttonPopup, setButtonPopup] = useState(false);
+  const activityName = props.city;
   return (
     <div className="place-card-container">
       <img
@@ -22,8 +24,8 @@ const PlaceCard = (props) => {
         <span className="place-card-text1">Looking for: <span className="place-card-text">{props.eventPax}</span> volunteers</span>
         <button className='button-40'onClick={() => setButtonPopup(true)}>Open Popup</button>
           <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-            <h3>LOL</h3>
             {props.displayData}
+            <CertificateDownloader activityName={activityName}/>
             </Popup>
       </div>
     </div>

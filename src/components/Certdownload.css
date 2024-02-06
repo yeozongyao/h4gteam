@@ -1,0 +1,32 @@
+/* Add this CSS to your stylesheet */
+
+/* Button styles */
+button {
+    background-color: #3498db; /* Background color */
+    color: #ffffff; /* Text color */
+    padding: 12px 24px; /* Padding */
+    border: none;
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 18px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    text-transform: uppercase; /* Uppercase text */
+  }
+  
+  /* Hover effect */
+  button:hover {
+    background-color: #2980b9; /* Darker background color on hover */
+  }
+  
+  /* Optional: Add box shadow for depth */
+  button:focus {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .button-container {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Space between buttons */
+    align-items: center; /* Center vertically */
+  }
+  
