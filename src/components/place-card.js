@@ -19,6 +19,7 @@ const PlaceCard = (props) => {
       <div className="place-card-container1">
         <span className="place-card-text">{props.city}</span>
         <span className="place-card-text1">{props.description}</span>
+        <span className="place-card-text1">Looking for: <span className="place-card-text">{props.eventPax}</span> volunteers</span>
         <button className='button-40'onClick={() => setButtonPopup(true)}>Open Popup</button>
           <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
             <h3>LOL</h3>
