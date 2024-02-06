@@ -7,15 +7,27 @@ import { onSnapshot, collection, addDoc } from 'firebase/firestore';
 import { useEffect, useState } from "react";
 import db from "../firebase";
 import { signup, useAuth, logout, login, } from "../firebase";
+import PlaceCard from "../components/place-card";
 
 const AdminEvents = () => {
     const currentUser = useAuth();
+
+    const [events, setEvents] = useState([{ name: "Loading..." }]); // Consider renaming 'event' to 'events' for clarity
+
+    useEffect(() => {
+      onSnapshot(collection(db, "EventsTest"), (snapshot) =>
+        setEvents(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      );
+    }, []);
+
+
     return (
         <div className='adminCert-main-div'>
             <NavBar name = "Admin " currentUser={currentUser}/>
             <div className='admin-list-of-events'>
-            <EventDiv city="Admin Events 1" description="Input Description Here"></EventDiv>
-            <EventDiv city="Admin Events 2" description="Input Description Here"></EventDiv>
+            {events.map((event) => (
+          <PlaceCard key={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax}/>
+        ))}
             </div>
         </div>
     )

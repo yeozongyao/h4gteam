@@ -14,6 +14,7 @@ import "../css/profilespage.css"; // Ensure this is the correct path to your CSS
 import NavBar from "../components/NavBar";
 import ViewProfilePage from "./viewprofile";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase";
 
 const ProfilesPage = () => {
   const history = useHistory();
@@ -27,6 +28,8 @@ const ProfilesPage = () => {
     availability: "",
     isAdmin: false,
   });
+
+  const currentUser = profile;
 
   useEffect(() => {
     const auth = getAuth();
@@ -93,7 +96,6 @@ const ProfilesPage = () => {
 
   const handleUpdateUser = async (profile) => {
     const db = getFirestore();
-
     try {
       const userCollectionRef = collection(db, "User");
       const userQuery = query(
@@ -149,9 +151,10 @@ const ProfilesPage = () => {
 
     return !userSnapshot.empty;
   };
+
   return (
     <>
-      <NavBar name="Profile" />
+      <NavBar name="Profile" currentUser={currentUser} />
       <div className="profile-page-container">
         <form className="profile-form" onSubmit={handleSubmit}>
           <div className="form-group">
