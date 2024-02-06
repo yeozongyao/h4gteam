@@ -25,6 +25,7 @@ const ProfilesPage = () => {
     sex: "",
     interests: [],
     availability: "",
+    isAdmin: false,
   });
 
   useEffect(() => {

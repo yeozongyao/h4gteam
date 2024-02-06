@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
-import { signup, useAuth, logout, login } from "../firebase";
+import { signup, useAuth, logout, login, } from "../firebase";
 import { useHistory } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import "../css/signin.css"; // Ensure this is the correct path to your CSS file
+
 
 export default function signin() {
   const history = useHistory();
@@ -12,10 +13,12 @@ export default function signin() {
   const emailRef = useRef();
   const passwordRef = useRef();
 
+
   async function handleSignup() {
     setLoading(true);
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
+      auth.onAuthStateChanged();
       history.push("/profiles");
     } catch (error) {
       alert("try again");

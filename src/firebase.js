@@ -65,6 +65,7 @@ export function useAuth() {
   
   return currentUser;
 }
-
+export { auth };
+export { db };
 
 export default getFirestore();

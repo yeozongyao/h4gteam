@@ -18,6 +18,7 @@ import AdminEvents from "./views/admin-events";
 import signin from "./views/signin";
 import AdminAddEvents from "./views/admin-add-events";
 import ViewProfilePage from "./views/viewprofile";
+import RouteGuard  from "./components/RouteGuard";
 
 const App = () => {
   return (
