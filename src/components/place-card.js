@@ -7,10 +7,21 @@ import "./place-card.css";
 import Popup from "./Popup.js";
 import { useState } from "react";
 import CertificateDownloader from "../components/Certdownload";
+import enrollInEvent from "../views/enrollInEvent";
 
 const PlaceCard = (props) => {
   const [buttonPopup, setButtonPopup] = useState(false);
   const activityName = props.city;
+  const handleEnrollClick = async () => {
+    try {
+      console.log(props.eventId);
+      console.log("eventPax:", props.eventPax);
+      await enrollInEvent(props.eventId, props.eventPax);
+      //props.setTrigger(false);
+    } catch (error) {
+      console.error("Error enrolling in event:", error);
+    }
+  };
   return (
     <div className="place-card-container">
       <img
@@ -38,6 +49,9 @@ const PlaceCard = (props) => {
           <p>{props.description}</p>
           <span>Looking for: {props.eventPax} volunteers</span>
           <CertificateDownloader activityName={activityName} />
+          <button className="enroll-button" onClick={handleEnrollClick}>
+            Enroll in Event
+          </button>
         </Popup>
       </div>
     </div>
