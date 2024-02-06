@@ -3,6 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc} from 'firebase/firestore';
 import { Form, Button } from 'react-bootstrap';
 import db from '../firebase'
+import './Form.css'
 
 function MyForm() {
   const [name, setName] = useState('');
