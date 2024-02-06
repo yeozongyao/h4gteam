@@ -9,6 +9,7 @@ function MyForm() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [eventPax, setEventPax] = useState('');
+  const [image, setImage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -20,11 +21,13 @@ function MyForm() {
         name,
         description,
         eventPax,
+        image,
       });
       alert('Event added successfully!');
       setName('');
       setDescription('');
       setEventPax('');
+      setImage('');
     } catch (error) {
       console.error('Error adding event:', error);
       alert('An error occurred. Please try again.');
@@ -60,6 +63,16 @@ function MyForm() {
           value={eventPax}
           onChange={(e) => setEventPax(e.target.value)}
           placeholder="Enter event pax"
+        />
+      </Form.Group>
+
+      <Form.Group controlId="image">
+        <Form.Label>Event Image link:</Form.Label>
+        <Form.Control
+          type="text"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+          placeholder="Enter link to event image"
         />
       </Form.Group>
 
