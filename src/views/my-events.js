@@ -16,21 +16,19 @@ const MyEvents = () => {
                     const db = getFirestore();
                     const userCollectionRef = collection(db, "User");
                     const userQuery = query(userCollectionRef, where("email", "==", currentUser.email));
-                    const userSnapshot = await getDocs(userQuery);
+                    const userSnapshot = await getDocs(userQuery);                   
+                    console.log("able to retrieve user query");
 
                     if (!userSnapshot.empty) {
-                        const enrolledEvents = userSnapshot.docs[0].enrolledEvents;
-                        console.log("can here");
-
-                        // Iterate over enrolledEvents to fetch event data for each event ID
-
-                         const eventsData = await Promise.all(enrolledEvents.map(async eventId => {
-                            const eventDoc = await getDoc(doc(db, "EventsTest", eventId));
-                            return eventDoc.exists() ? { id: eventDoc.id, ...eventDoc.data() } : null;
-                        }));
-
-             
-                        setMyEvents(filteredEventsData);
+                        const userId = userSnapshot.docs[0].id;
+                        const eventsCollectionRef = collection(db, "EventsTest");
+                        const eventsQuery = query(eventsCollectionRef, where("enrolledUsers", "array-contains", userId));
+                        const eventsSnapshot = await getDocs(eventsQuery);                       
+                        console.log("able to retrieve events query");
+                        const eventsData = eventsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                        console.log("able to set events data");
+                        setMyEvents(eventsData);
+                        console.log("able to set my events");
                     } else {
                         console.error("User document not found for email:", currentUser.email);
                     }
@@ -46,6 +44,9 @@ const MyEvents = () => {
     return (
         <div>
             <NavBar name="My Events" />
+            <div>
+                <h4>Thank you for enrolling in these events!</h4>
+            </div>
             <div className="landing-page-cards-container">
                 {myEvents.map(event => (
                     <EventCard eventId={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax} />

@@ -27,6 +27,7 @@ const ProfilesPage = () => {
     interests: [],
     availability: "",
     isAdmin: false,
+    enrolledEvents: [],
   });
 
   const currentUser = profile;

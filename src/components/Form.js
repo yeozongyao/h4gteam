@@ -30,6 +30,7 @@ function MyForm() {
         eventStartDateTime,
         eventEndDateTime,
         eventOrg,
+        enrolledUsers,
       });
       alert('Event added successfully!');
       setName('');
@@ -40,6 +41,7 @@ function MyForm() {
       setEventStartDateTime('');
       setEventEndDateTime('');
       setEventOrg('');
+      setEnrolledUsers([]);
     } catch (error) {
       console.error('Error adding event:', error);
       alert('An error occurred. Please try again.');
