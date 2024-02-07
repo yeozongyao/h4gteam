@@ -27,6 +27,15 @@ function Enrol(props) {
                     await updateDoc(doc(db, "User", userId), {
                         enrolledEvents: [...(userSnapshot.docs[0].data().enrolledEvents || []), props.eventId]
                     });
+                    console.log("can add events to user");
+
+                    // Add the user ID to the event document in the Events collection
+                    await updateDoc(doc(db, "EventsTest", props.eventId), {
+                        enrolledUsers: [...(userSnapshot.docs[0].data().enrolledUsers || []), userId]
+                    });
+                    console.log("can add user to event");
+
+                    
                     // Close the popup after enrolment
                     props.setTrigger(false);
                     
