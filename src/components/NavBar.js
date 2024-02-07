@@ -41,6 +41,9 @@ export default function NavBar({ name, currentUser }) {
                                 <a href="/cert" className="landing-page-text">
                                     Cert
                                 </a>
+                                <a href="/myevents" className="landing-page-text">
+                                    My Events
+                                </a>
                                 <a href="/signup" className="landing-page-text">
                                     Account
                                 </a>

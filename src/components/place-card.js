@@ -32,27 +32,12 @@ const PlaceCard = (props) => {
       <div className="place-card-container1">
         <span className="place-card-text">{props.city}</span>
         <span className="place-card-text1">{props.description}</span>
-        <span className="place-card-text1">
-          Looking for: <span className="place-card-text">{props.eventPax}</span>{" "}
-          volunteers
-        </span>
-        <button className="button-40" onClick={() => setButtonPopup(true)}>
-          Open Popup
-        </button>
-        <Popup
-          trigger={buttonPopup}
-          setTrigger={setButtonPopup}
-          eventId={props.eventId}
-          eventPax={props.eventPax}
-        >
-          <h3>{props.city}</h3>
-          <p>{props.description}</p>
-          <span>Looking for: {props.eventPax} volunteers</span>
-          <CertificateDownloader activityName={activityName} />
-          <button className="enroll-button" onClick={handleEnrollClick}>
-            Enroll in Event
-          </button>
-        </Popup>
+        <span className="place-card-text1">Looking for: <span className="place-card-text">{props.eventPax}</span> volunteers</span>
+        <button className='button-40'onClick={() => setButtonPopup(true)}>Download Certificate</button>
+          <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+            {props.displayData}
+            <CertificateDownloader activityName={activityName}/>
+            </Popup>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import db from "../firebase";
-import PlaceCard from "../components/place-card";
+import EventCard from '../components/event-card'
 import "../css/activities-page.css";
 import NavBar from "../components/NavBar";
 import { onSnapshot, collection } from "firebase/firestore";
@@ -23,14 +23,8 @@ const ActivitiesPage = () => {
       </div>
       <div className="landing-page-cards-container">
         {events.map((event) => (
-          <PlaceCard
-            key={event.id}
-            eventId={event.id}
-            city={event.name}
-            description={event.description}
-            image={event.image}
-            eventPax={event.eventPax}
-          />
+          <EventCard eventId={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax}/>
+        
         ))}
       </div>
     </div>
