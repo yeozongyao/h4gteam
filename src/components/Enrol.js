@@ -22,7 +22,7 @@ function Enrol(props) {
                 const userSnapshot = await getDocs(userQuery);
                 if (!userSnapshot.empty) {
                     const userId = userSnapshot.docs[0].id;
-    
+                    
                     // Update the user document to add the event ID to the enrolledEvents array
                     await updateDoc(doc(db, "User", userId), {
                         enrolledEvents: [...(userSnapshot.docs[0].data().enrolledEvents || []), props.eventId]
@@ -35,10 +35,19 @@ function Enrol(props) {
                     });
                     console.log("can add user to event");
 
+                    // Combine MLData using Event Description
+                    const updatedMLData = userData.MLData ? `${userData.MLData} ${eventDescription}` : eventDescription;
+
+                    // Update user profile ML Data with the enrolled event description
+                    await updateDoc(
+                      userDocRef,
+                      { MLData: updatedMLData },
+                    );
                     
                     // Close the popup after enrolment
                     props.setTrigger(false);
-                    
+
+                    alert("Successfully addded");
                 }
             } catch (error) {
                 console.error("Error updating", error);

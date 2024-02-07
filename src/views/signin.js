@@ -18,10 +18,9 @@ export default function signin() {
     setLoading(true);
     try {
       await signup(emailRef.current.value, passwordRef.current.value);
-      auth.onAuthStateChanged();
       history.push("/profiles");
     } catch (error) {
-      alert("try again");
+      alert(error);
     }
     setLoading(false);
   }
