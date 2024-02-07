@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import db from "../firebase";
-import PlaceCard from "../components/place-card";
+import EventCard from '../components/event-card'
 import "../css/activities-page.css";
 import NavBar from "../components/NavBar";
 import {
@@ -29,7 +29,8 @@ const ActivitiesPage = () => {
       {/* Ensure all PlaceCards are direct children of a single container */}
       <div className="landing-page-cards-container">
         {events.map((event) => (
-          <PlaceCard key={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax}/>
+          <EventCard eventId={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax}/>
+        
         ))}
       </div>
     </div>

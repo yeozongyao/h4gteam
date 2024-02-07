@@ -19,6 +19,7 @@ import signin from "./views/signin";
 import AdminAddEvents from "./views/admin-add-events";
 import ViewProfilePage from "./views/viewprofile";
 import RouteGuard  from "./components/RouteGuard";
+import MyEvents from "./views/my-events";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route component={ProfilesPage} exact path="/profiles" />
         <Route component={signin} exact path="/signup" />
         <Route component={AdminAddEvents} exact path="/addevents" />
+        <Route component={MyEvents} exact path="/myevents" />
         <Route component={NotFound} path="**" />
 
         <Route
