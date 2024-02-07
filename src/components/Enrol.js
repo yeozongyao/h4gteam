@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import './Enrol.css'; 
-import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs, getDoc } from 'firebase/firestore';
 import { updateDoc, doc } from "firebase/firestore"; // Import Firestore update functions
 import { useAuth } from "../firebase";
 
@@ -17,9 +17,19 @@ function Enrol(props) {
             const db = getFirestore();
             const userCollectionRef = collection(db, "User");
             const userQuery = query(userCollectionRef, where("email", "==", currentUser.email));
-        
+            const querySnapshot = await getDocs(userQuery);
+    
+            // Uer Document Reference
+            const userDocRef = querySnapshot.docs[0].ref;
             try {
                 const userSnapshot = await getDocs(userQuery);
+                const eventDocRef = doc(db, "EventsTest", props.eventId);
+
+                // Fetch the event document to get the event description
+                const eventDocSnapshot = await getDoc(eventDocRef);
+                console.log("event doc here", eventDocSnapshot);
+                const eventData = eventDocSnapshot.data();
+                const eventDescription = eventData.description;
                 if (!userSnapshot.empty) {
                     const userId = userSnapshot.docs[0].id;
                     
@@ -34,11 +44,11 @@ function Enrol(props) {
                         enrolledUsers: [...(userSnapshot.docs[0].data().enrolledUsers || []), userId]
                     });
                     console.log("can add user to event");
-
+                    const userData = userSnapshot.docs[0].data();
                     // Combine MLData using Event Description
                     const updatedMLData = userData.MLData ? `${userData.MLData} ${eventDescription}` : eventDescription;
-
                     // Update user profile ML Data with the enrolled event description
+                    console.log("updated with", updatedMLData);
                     await updateDoc(
                       userDocRef,
                       { MLData: updatedMLData },

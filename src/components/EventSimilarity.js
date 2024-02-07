@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import db from '../firebase';
 import { onSnapshot, collection, addDoc } from "firebase/firestore";
-import natural from 'natural';
+import { NlpManager } from 'node-nlp';
 
 const EventSimilarity = ({ currentUser }) => {
   const [events, setEvents] = useState([]);
@@ -34,45 +34,94 @@ const EventSimilarity = ({ currentUser }) => {
     updateML(currentUser);
   }, []);
 
-  useEffect(() => {
-    if (events.length > 0) {
-      const tokenizer = new natural.WordTokenizer();
-      const processedEvents = events.map(event => ({
-        id: event.id,
-        tokens: tokenizer.tokenize(event.description.toLowerCase())
-      }));
+  useEffect(async   () => {
+    if (MLData && events.length > 0) {
+      const manager = new NlpManager({ languages: ['en'] });
 
-      const tfidf = new natural.TfIdf();
-      processedEvents.forEach(event => tfidf.addDocument(event.tokens));
+      events.forEach(event => manager.addDocument('en', event.description));
+      await manager.train();
 
-      const results = [];
-      for (let i = 0; i < events.length; i++) {
-        for (let j = i + 1; j < events.length; j++) {
-          const similarity = cosineSimilarity(tfidf, processedEvents[i].tokens, processedEvents[j].tokens);
-          results.push({
-            event1: events[i],
-            event2: events[j],
-            similarity: similarity
-          });
-        }
+      const similarityResults = [];
+      for (const event of events) {
+        const similarity = await manager.process('en', MLData, event.description);
+        similarityResults.push({ id: event.id, similarity: similarity.score });
       }
-      setSimilarityResults(results);
+
+      // Sort by similarity score in descending order
+      similarityResults.sort((a, b) => b.similarity - a.similarity);
+
+      // Get the top 5 similar events
+      const topSimilarEvents = similarityResults.slice(0, 5);
+
+      setTopSimilarEvents(topSimilarEvents);
     }
-  }, [events]);
+  }, [MLData, events]);
 
-  const cosineSimilarity = (tfidf, tokens1, tokens2) => {
-    const vec1 = tfidf.getDocumentFrequencyVector(tokens1);
-    const vec2 = tfidf.getDocumentFrequencyVector(tokens2);
-    return natural.TfIdf.tfIdfSimilarity(vec1, vec2);
+  useEffect(() => {
+    const calculateSimilarity = () => {
+      if (MLData && events.length > 0) {
+        const similarityResults = [];
+        for (const event of events) {
+          const similarity = cosineSimilarity(MLData, event.description);
+          similarityResults.push({ id: event.id, similarity });
+        }
+
+        // Sort by similarity score in descending order
+        similarityResults.sort((a, b) => b.similarity - a.similarity);
+
+        // Get the top 5 similar events
+        const topSimilarEvents = similarityResults.slice(0, 5);
+
+        setTopSimilarEvents(topSimilarEvents);
+      }
+    };
+
+    calculateSimilarity();
+  }, [MLData, events]);
+
+  // Function to calculate cosine similarity between two vectors
+  const cosineSimilarity = (vec1, vec2) => {
+    // Convert strings to lowercase and split into words
+    const words1 = vec1.toLowerCase().split(/\s+/);
+    const words2 = vec2.toLowerCase().split(/\s+/);
+
+    // Calculate word frequency in both vectors
+    const wordFreq1 = {};
+    const wordFreq2 = {};
+    words1.forEach(word => {
+      wordFreq1[word] = (wordFreq1[word] || 0) + 1;
+    });
+    words2.forEach(word => {
+      wordFreq2[word] = (wordFreq2[word] || 0) + 1;
+    });
+
+    // Calculate dot product
+    let dotProduct = 0;
+    for (const word in wordFreq1) {
+      if (wordFreq2.hasOwnProperty(word)) {
+        dotProduct += wordFreq1[word] * wordFreq2[word];
+      }
+    }
+
+    // Calculate magnitudes
+    const magnitude1 = Math.sqrt(Object.values(wordFreq1).reduce((acc, val) => acc + val ** 2, 0));
+    const magnitude2 = Math.sqrt(Object.values(wordFreq2).reduce((acc, val) => acc + val ** 2, 0));
+
+    // Calculate cosine similarity
+    if (magnitude1 !== 0 && magnitude2 !== 0) {
+      return dotProduct / (magnitude1 * magnitude2);
+    } else {
+      return 0;
+    }
   };
-
+  
   return (
     <div>
-      <h2>Event Similarity Results</h2>
+      <h2>Top 5 Events Similar to MLData</h2>
       <ul>
-        {similarityResults.map((result, index) => (
+        {topSimilarEvents.map((event, index) => (
           <li key={index}>
-            <p>Similarity between Event {result.event1.id} and Event {result.event2.id}: {result.similarity}</p>
+            <p>Event ID: {event.id}, Similarity: {event.similarity}</p>
           </li>
         ))}
       </ul>

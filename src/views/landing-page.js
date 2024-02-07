@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import db, { auth, useAuth } from "../firebase";
-
+import EventSimilarity from "../components/EventSimilarity";
 import { Helmet } from "react-helmet";
 import SolidButton from "../components/solid-button";
 import PlaceCard from "../components/place-card";
