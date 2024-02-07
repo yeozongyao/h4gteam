@@ -80,7 +80,7 @@ function Enrol(props) {
             { merge: true }
           );
 
-          alert("Successfully addded");
+          alert("YAY :) You have successfully enrolled for the event!");
         }
       } catch (error) {
         console.error("Error updating", error);
