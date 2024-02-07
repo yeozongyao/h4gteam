@@ -1,7 +1,36 @@
 .admin-list-of-events {
-    margin-top: 10px;
+  width: 100%;
+  display: flex;
+  grid-gap: var(--dl-space-space-doubleunit);
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin-top: var(--dl-space-space-doubleunit);
+  align-items: flex-start;
+  margin-bottom: var(--dl-space-space-doubleunit);
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 150px;
+}
+.admin-event-card {
+  display: flex;
+  width: 100%; /* Ensure each card takes the full width of the container */
+}
+
+.admin-event-image {
+  width: 200px; /* Adjust the width of the image as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 50px; /* Add margin for spacing */
+}
+
+.admin-event-info {
+  flex: 1; /* Allow the info section to grow to fill available space */
+}
+
+.admin-event-details {
+  margin-top: 20px; /* Add margin for spacing */
+  margin-bottom: 20px;
 }
 
 .eventDiv-container {
-    margin-bottom:20%;
+  margin-bottom: 20%;
 }
