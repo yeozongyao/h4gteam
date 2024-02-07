@@ -5,7 +5,7 @@ import '../css/admin-cert.css'
 import { signup, useAuth, logout, login, } from "../firebase";
 
 const AdminCert = () => {
-    const currentUser = useAuth()
+    const currentUser = useAuth();
     return (
         <div className='adminCert-main-div'>
             <NavBar name = "Admin" currentUser={currentUser}/>

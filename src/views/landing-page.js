@@ -1,9 +1,9 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import db from "../firebase";
+import db, { auth, useAuth } from "../firebase";
 
 import { Helmet } from "react-helmet";
-
+import EventSimilarity from "../components/EventSimilarity";
 import SolidButton from "../components/solid-button";
 import PlaceCard from "../components/place-card";
 import "../css/landing-page.css";
@@ -30,7 +30,7 @@ const Dot = ({ color }) => {
 
 const LandingPage = () => {
   const [colors, setColors] = useState([{ name: "Loading..." }]);
-  console.log(colors);
+  const currentUser = auth.currentUser; // Get the current user
   useEffect(
     () =>
       onSnapshot(collection(db, "colors"), (snapshot) =>
@@ -89,51 +89,12 @@ const LandingPage = () => {
                 <a href="#">edit</a> <Dot color="#00f" /> Blue
               </li>
             </ul>
-            <span className="landing-page-text10">
-              <span>
-                Each property is hand-picked,
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: " ",
-                  }}
-                />
-              </span>
-              <br></br>
-              <span>personally visited and cannot be found elsewhere.</span>
-            </span>
             <SolidButton button="Explore homes"></SolidButton>
           </div>
         </div>
       </div>
       <div id="main-section" className="landing-page-main">
-        <h1>Most famous places</h1>
-        <span className="landing-page-text15">Recommended</span>
-        <div className="landing-page-cards-container">
-          <PlaceCard
-            city="London"
-            image="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
-          <PlaceCard
-            city="Rome"
-            image="https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
-          <PlaceCard
-            city="Cluj-Napoca"
-            image="https://images.unsplash.com/photo-1513342791620-b106dc487c94?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
-          <PlaceCard
-            city="Paris"
-            image="https://images.unsplash.com/photo-1551634979-2b11f8c946fe?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
-          <PlaceCard
-            city="Amsterdam"
-            image="https://images.unsplash.com/photo-1585211969224-3e992986159d?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
-          <PlaceCard
-            city="Barcelona"
-            image="https://images.unsplash.com/photo-1564221710304-0b37c8b9d729?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb&amp;h=1000"
-          ></PlaceCard>
-        </div>
+      <EventSimilarity currentUser={currentUser}/>
       </div>
       <div className="landing-page-footer">
         <div className="landing-page-menu">

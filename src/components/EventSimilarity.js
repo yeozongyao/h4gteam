@@ -5,6 +5,7 @@ import natural from 'natural';
 
 const EventSimilarity = ({ currentUser }) => {
   const [events, setEvents] = useState([]);
+  const [MLData, setMLData] = useState('');
   const [similarityResults, setSimilarityResults] = useState([]);
 
   useEffect(() => {
@@ -12,13 +13,25 @@ const EventSimilarity = ({ currentUser }) => {
       const eventCollection = db.collection('EventsTest');
       const snapshot = await eventCollection.get();
       const eventsData = snapshot.docs.map(doc => ({
-        id: doc.id,
+        id: doc.data().name,
         description: doc.data().description
       }));
       setEvents(eventsData);
     };
 
     fetchEvents();
+  }, []);
+
+  useEffect(() => {
+    const updateML = async (currentUser) => {
+    // find current profile using email
+    const userCollectionRef = collection(db, "User");
+    const userQuery = query(userCollectionRef, where("email", "==", currentUser.email));
+    const userSnapshot = await getDocs(userQuery);;
+    const userData = userSnapshot.docs[0].data();
+    setMLData(userData.MLData);
+    };
+    updateML(currentUser);
   }, []);
 
   useEffect(() => {
