@@ -32,6 +32,15 @@ function Enrol(props) {
         const userSnapshot = await getDocs(userQuery);
         if (!userSnapshot.empty) {
           const userId = userSnapshot.docs[0].id;
+          const userData = userSnapshot.docs[0].data();
+          // Check if the user is already enrolled in the event
+          if (
+            userData.enrolledEvents &&
+            userData.enrolledEvents.includes(props.eventId)
+          ) {
+            alert("You are already enrolled in this event.");
+            return; // Stop the function execution
+          }
 
           // Update the user document to add the event ID to the enrolledEvents array
           await updateDoc(doc(db, "User", userId), {
