@@ -4,6 +4,8 @@ import { useAuth } from "../firebase";
 import EventCard from '../components/event-card';
 import "../css/activities-page.css";
 import NavBar from "../components/NavBar";
+import "../css/my-events.css"; // Ensure this is the correct path to your CSS file
+
 
 const MyEvents = () => {
     const currentUser = useAuth();
@@ -44,7 +46,7 @@ const MyEvents = () => {
     return (
         <div>
             <NavBar name="My Events" />
-            <div>
+            <div className="sometitle">
                 <h4>Thank you for enrolling in these events!</h4>
             </div>
             <div className="landing-page-cards-container">
