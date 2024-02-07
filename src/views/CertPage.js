@@ -1,15 +1,9 @@
 import React from 'react'
-
-import { Helmet } from 'react-helmet'
-import PropTypes from 'prop-types'
-import SolidButton from '../components/solid-button'
 import PlaceCard from '../components/place-card'
 import '../css/landing-page.css'
 import NavBar from '../components/NavBar'
 import { useState, useEffect } from 'react';
-import Popup from '../components/Popup'
 import { signup, useAuth, logout, login, } from "../firebase";
-import CertificateDownloader from '../components/Certdownload'
 import db from '../firebase';
 import { onSnapshot, collection, addDoc } from "firebase/firestore";
 

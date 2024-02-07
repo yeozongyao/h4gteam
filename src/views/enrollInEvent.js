@@ -5,11 +5,19 @@ import {
   arrayUnion,
   setDoc,
   updateDoc,
-} from "firebase/firestore"; // Import specific functions from Firestore
+  getDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+  querySnapshot,
+} from "firebase/firestore"; // Import specific functions from Firestore  
+
 
 const db = getFirestore(); // Initialize Firestore
 
 const enrollInEvent = async (eventId, eventPax) => {
+
   try {
     const currentUser = auth.currentUser; // Get the current user
 
@@ -30,6 +38,35 @@ const enrollInEvent = async (eventId, eventPax) => {
 
     // Reference the event document in the "EventsTest" collection
     const eventDocRef = doc(db, "EventsTest", eventId);
+
+    // Fetch the event document to get the event description
+    const eventDocSnapshot = await getDoc(eventDocRef);
+    console.log("event doc here", eventDocSnapshot);
+    const eventData = eventDocSnapshot.data();
+    const eventDescription = eventData.description;
+
+
+    // find current profile using email
+    const userCollectionRef = collection(db, "User");
+    const userQuery = query(userCollectionRef, where("email", "==", currentUser.email));
+    const userSnapshot = await getDocs(userQuery);;
+    const userData = userSnapshot.docs[0].data();
+    const querySnapshot = await getDocs(userQuery);
+    
+    // Uer Document Reference
+    const userDocRef = querySnapshot.docs[0].ref;
+
+    // Reference the user document in the "users" collection
+    // const userDocRef = doc(db, "User", currentUser.id);
+    
+    // Concatenate the event description with the existing MLData
+    const updatedMLData = userData.MLData ? `${userData.MLData} ${eventDescription}` : eventDescription;
+
+    // Update user profile with the enrolled event description
+    await updateDoc(
+      userDocRef,
+      { MLData: updatedMLData },
+    );
 
     // Decrease eventPax for the event
     await setDoc(eventDocRef, { eventPax: eventPax - 1 }, { merge: true });
