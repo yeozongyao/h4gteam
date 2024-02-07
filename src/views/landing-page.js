@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import db, { auth, useAuth } from "../firebase";
 
 import { Helmet } from "react-helmet";
-import EventSimilarity from "../components/EventSimilarity";
 import SolidButton from "../components/solid-button";
 import PlaceCard from "../components/place-card";
 import "../css/landing-page.css";
@@ -94,7 +93,6 @@ const LandingPage = () => {
         </div>
       </div>
       <div id="main-section" className="landing-page-main">
-      <EventSimilarity currentUser={currentUser}/>
       </div>
       <div className="landing-page-footer">
         <div className="landing-page-menu">
