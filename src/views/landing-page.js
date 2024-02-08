@@ -74,7 +74,9 @@ const LandingPage = () => {
        
         <div className="parting-container">
           <div className="recommend2">
-            <h2>Here is how you can help! Events recommended for you!</h2>
+            <h1>Here is how you can help! Events recommended for you!</h1>
+            <br></br>
+            <p style={{ fontSize: '20px' }}>Log in for Personalised Recommendations!</p>
           </div>
         </div>
 
@@ -82,9 +84,7 @@ const LandingPage = () => {
         <EventSimilarity/>
         </div>
 
-          
-        
-
+      
      
       <div className="landing-page-top-container">
       </div>

@@ -1,0 +1,33 @@
+/* eventsimilarity.css or landing-page.css */
+
+.similar-events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Adjust the gap to your liking */
+    margin: 0 auto; /* Center the container */
+    max-width: 1200px; /* Adjust the max width to your liking */
+    flex-basis: calc((100% - 2 * 50px) / 3);
+  }
+  
+  .event-card {
+    flex: 0 1 calc(33.333% - 20px); /* Subtract the gap from the width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* Space between rows */
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 991px) {
+    .event-card {
+      flex: 0 1 calc(50% - 20px); /* Adjust to show 2 cards per row on medium screens */
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .event-card {
+      flex: 0 1 100%; /* Adjust to show 1 card per row on small screens */
+    }
+  }
+  

@@ -3,6 +3,7 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 import db from '../firebase';
 import { useAuth } from "../firebase";
 import EventCard from './event-card';
+import './EventSimilarity.css'
 
 // Function to tokenize text
 function tokenize(text) {
@@ -197,10 +198,13 @@ const EventSimilarity = ({ currentUser }) => {
 
   return (
     <div>
-      <h2>HERE IS WHAT YOU'LL LIKE</h2>
-      {finalSimilarEvents.map((event, index) => (
+      <div className='similar-events-container'>
+        {finalSimilarEvents.map((event, index) => (
+        <div className="event-card">
         <EventCard key={index} eventId={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax} />
-      ))}
+        </div>
+        ))}
+      </div>
     </div>
   );
 };
