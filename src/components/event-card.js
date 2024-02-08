@@ -25,8 +25,10 @@ const EventCard = (props) => {
           Looking for: <span className="place-card-text">{props.eventPax}</span>{" "}
           volunteers
         </span>
-        <button className="button-40" onClick={() => setButtonPopup(true)}>
-          Enrol for Event Now
+        <button className="button-40" 
+        disabled={props.eventPax === 0}
+        onClick={() => setButtonPopup(true)}>
+          {props.eventPax === 0 ? "No more slots" : "Enrol for Event Now"}          
         </button>
         <Enrol
           trigger={buttonPopup}
