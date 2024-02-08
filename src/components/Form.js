@@ -14,6 +14,7 @@ function MyForm() {
   const [eventStartDateTime, setEventStartDateTime]= useState('');
   const [eventEndDateTime, setEventEndDateTime] = useState('');
   const [eventOrg, setEventOrg] = useState('');
+  const [enrolledUsers, setEnrolledUsers] = useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
