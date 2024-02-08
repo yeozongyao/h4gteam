@@ -97,45 +97,16 @@ const LandingPage = () => {
       </div>
       <div className="landing-page-footer">
         <div className="landing-page-menu">
-          <h1>Travel</h1>
+          <h1>Helpful Links</h1>
           <div className="landing-page-links-container2">
             <div className="landing-page-container1">
               <a
-                href="https://example.com"
+                href="https://www.bigatheart.org/"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="landing-page-link05"
               >
-                Tour packages
-              </a>
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="landing-page-link06"
-              >
-                Personalized offers
-              </a>
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="landing-page-link07"
-              >
-                Special deals
-              </a>
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="landing-page-link08"
-              >
-                Summer holiday
-                <span
-                  dangerouslySetInnerHTML={{
-                    __html: " ",
-                  }}
-                />
+                About Us
               </a>
             </div>
             <div className="landing-page-container2">
@@ -145,31 +116,7 @@ const LandingPage = () => {
                 rel="noreferrer noopener"
                 className="landing-page-link09"
               >
-                About us
-              </a>
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="landing-page-link10"
-              >
-                FAQ
-              </a>
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="landing-page-link11"
-              >
-                Terms and conditions
-              </a>
-              <a
-                href="https://example.com"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="landing-page-link12"
-              >
-                Contact
+                Volunteering in SG
               </a>
             </div>
           </div>
@@ -184,7 +131,7 @@ const LandingPage = () => {
             </span>
             <div className="landing-page-icons-container1">
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/gdsc"
                 target="_blank"
                 rel="noreferrer noopener"
                 className="landing-page-link13"
