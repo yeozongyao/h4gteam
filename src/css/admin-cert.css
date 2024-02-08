@@ -37,11 +37,7 @@
 }
 
 .card-container {
-  background-color: #f2f2f2; /* Light grey background */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  padding: 20px; /* Space inside the card */
-  margin: 20px; /* Space outside the card */
+
   display: inline-block; /* Allows cards to sit side-by-side */
   vertical-align: top; /* Aligns the cards at the top */
   width: calc(33.333% - 40px); /* Subtract margin from the total width for 3 cards in a row */
