@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { getFirestore, doc, updateDoc } from 'firebase/firestore';
+import "./CertApproval.css";
 
-const CertApprovalComponent = ({ requestId, userEmail, userName, eventId, eventName, onApprovalSuccess }) => {
+const CertApprovalComponent = ({ requestId, userEmail, userName, eventId, eventName, imageLink, onApprovalSuccess }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -30,14 +31,21 @@ const CertApprovalComponent = ({ requestId, userEmail, userName, eventId, eventN
 
   return (
     <>
-      <p>User: {userEmail}</p>
+    <div className="approval-image-text">
+      <img
+        src={imageLink}
+        className="approval-card-image"
+      />
       <p>User Name: {userName}</p>
-      <p>Event ID: {eventId}</p>
+      <p>User: {userEmail}</p>
       <p>Event Name: {eventName}</p>
+    </div>
+    <div className="approval-button">
       <button className='button-40' onClick={approveCertificate} disabled={isLoading}>
         {isLoading ? 'Approving...' : 'Approve Certificate'}
       </button>
       {error && <p className="error-message">{error}</p>}
+    </div>
     </>
   );
 };

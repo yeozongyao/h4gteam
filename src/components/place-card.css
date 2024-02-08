@@ -4,7 +4,17 @@
   flex-direction: column;
   flex: 0 1 calc((100% - 2 * 50px) / 3); /* Assuming 20px is the desired gap */
   margin-top: 10px; /* Half of your gap on all sides */
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  margin-top: 40px;
+  text-align: center;
+  background-color: #f2f2f2; /* Light grey background */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  display: inline-block; /* Allows cards to sit side-by-side */
+  vertical-align: top; /* Aligns the cards at the top */
+  padding: 20px;
+  align-items: center;
+  flex-direction: column;
 }
 
 .place-card-image {
@@ -13,6 +23,7 @@
   object-fit: cover;
   border-top-left-radius: var(--dl-radius-radius-radius8);
   border-top-right-radius: var(--dl-radius-radius-radius8);
+
 }
 .place-card-container1 {
   width: 100%;

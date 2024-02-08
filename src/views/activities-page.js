@@ -5,6 +5,7 @@ import EventCard from '../components/event-card'
 import "../css/activities-page.css";
 import NavBar from "../components/NavBar";
 import { onSnapshot, collection } from "firebase/firestore";
+import Footer from "../components/footer";
 
 const ActivitiesPage = () => {
   const [events, setEvents] = useState([{ name: "Loading..." }]);
@@ -23,11 +24,13 @@ const ActivitiesPage = () => {
       </div>
       <div className="landing-page-cards-container">
         {events.map((event) => (
-          <EventCard eventId={event.id} city={event.name} des={event.description} image={event.image} eventPax={event.eventPax}/>
+          <EventCard eventId={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax}/>
         
         ))}
       </div>
+    <Footer />
     </div>
+    
   );
 };
 
