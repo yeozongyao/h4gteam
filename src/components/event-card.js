@@ -20,7 +20,7 @@ const EventCard = (props) => {
       />
       <div className="place-card-container1">
         <span className="place-card-text">{props.city}</span>
-        <span className="place-card-text1">{props.description}</span>
+        <span className="place-card-text1">{props.des}</span>
         <span className="place-card-text1">
           Looking for: <span className="place-card-text">{props.eventPax}</span>{" "}
           volunteers
@@ -42,12 +42,10 @@ const EventCard = (props) => {
 };
 
 EventCard.defaultProps = {
-  image:
-    "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=1000",
-  imageAlt: "image",
+  
   city: "City Name",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
+    "hahaahahaha",
 };
 
 EventCard.propTypes = {

@@ -1,7 +1,7 @@
 /* NavBar.css */
 h1 {
     font-size: 30px; /* Reduced font size */
-    font-family:monospace; /* Change font family to Poppins */
+    font-family: "DejaVu Sans Mono", monospace; /* Change font family to Poppins */
 }
 
 .landing-page-top-container-navbar-edition {
