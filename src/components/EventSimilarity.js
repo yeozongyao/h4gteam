@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { collection, query, where, getDocs, documentId } from 'firebase/firestore';
 import db from '../firebase';
 import { useAuth } from "../firebase";
-import EventCard from './event-card';
-import RecoCard from './reco-card';
 
 // Function to tokenize text
 function tokenize(text) {
@@ -12,7 +10,8 @@ function tokenize(text) {
 
 // Function to calculate TF (Term Frequency) for a document
 function calculateTF(tokens) {
-  const tf = {};
+  try {
+    const tf = {};
     tokens.forEach(token => {
       tf[token] = tf[token] ? tf[token] + 1 : 1;
     });
@@ -21,6 +20,9 @@ function calculateTF(tokens) {
       tf[token] /= totalTokens;
     });
     return tf;
+} catch {
+  return 0;
+}
 }
 
 // Function to calculate IDF (Inverse Document Frequency) for a set of documents
