@@ -1,0 +1,23 @@
+.approval-card-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: var(--dl-radius-radius-radius8);
+    border-top-right-radius: var(--dl-radius-radius-radius8);
+  }
+
+  .approval-button {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .approval-image-text {
+    margin-top: 40px;
+    text-align: center;
+    background-color: #f2f2f2; /* Light grey background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    display: inline-block; /* Allows cards to sit side-by-side */
+    vertical-align: top; /* Aligns the cards at the top */
+    padding: 20px;
+  }

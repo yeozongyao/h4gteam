@@ -36,7 +36,7 @@ const PlaceCard = (props) => {
         src={props.image}
         className="place-card-image"
       />
-      <div className="place-card-container1">
+      
         
         <span className="place-card-text">{props.city}</span>
         <span className="place-card-text1">{props.description}</span>
@@ -57,7 +57,7 @@ const PlaceCard = (props) => {
                 
             )}
 
-      </div>
+      
     </div>
   );
 
@@ -73,14 +73,7 @@ PlaceCard.defaultProps = {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
 };
 
-PlaceCard.propTypes = {/*
-  image: PropTypes.string,
-  imageAlt: PropTypes.string,
-  city: PropTypes.string,
-  description: PropTypes.string,
-  onRequestCertificate: PropTypes.func.isRequired,
-  hasRequested: PropTypes.bool.isRequired,
-  isApproved: PropTypes.bool.isRequired,*/
+PlaceCard.propTypes = {
   image: PropTypes.string,
   imageAlt: PropTypes.string,
   city: PropTypes.string,

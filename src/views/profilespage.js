@@ -15,6 +15,7 @@ import NavBar from "../components/NavBar";
 import ViewProfilePage from "./viewprofile";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
+import Footer from "../components/footer";
 
 const ProfilesPage = () => {
   const history = useHistory();
@@ -270,6 +271,7 @@ const ProfilesPage = () => {
           <button type="submit">Set Up Profile</button>
         </form>
       </div>
+      <Footer />
     </>
   );
 };

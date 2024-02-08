@@ -7,6 +7,7 @@ import NavBar from "../components/NavBar";
 import "../css/my-events.css"; // Ensure this is the correct path to your CSS file
 import PlaceCard from '../components/place-card'
 import { onSnapshot, addDoc } from "firebase/firestore";
+import Footer from "../components/footer";
 
 
 const CertPage = () => {
@@ -91,7 +92,7 @@ const CertPage = () => {
   
     return (
         <div>
-            <NavBar name="My Events" />
+            <NavBar name="Certificates" />
             <div className="sometitle">
                 <h4>Thanks for volunteering! Here's an official certificate for your contributions!</h4>
             </div>
@@ -115,6 +116,7 @@ const CertPage = () => {
                 );
             })} 
             </div>
+            <Footer />
         </div>
     );
 };
