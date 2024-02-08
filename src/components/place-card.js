@@ -10,6 +10,8 @@ import CertificateDownloader from "../components/Certdownload";
 import enrollInEvent from "../views/enrollInEvent";
 
 const PlaceCard = (props) => {
+  console.log({ props });
+
   const [buttonPopup, setButtonPopup] = useState(false);
   const activityName = props.city;
   const handleEnrollClick = async () => {
@@ -22,6 +24,11 @@ const PlaceCard = (props) => {
       console.error("Error enrolling in event:", error);
     }
   };
+  const handleRequestCertificateClick = () => {
+    if (props.onRequestCertificate) {
+        props.onRequestCertificate();
+    }
+  };
   return (
     <div className="place-card-container">
       <img
@@ -30,17 +37,31 @@ const PlaceCard = (props) => {
         className="place-card-image"
       />
       <div className="place-card-container1">
+        
         <span className="place-card-text">{props.city}</span>
         <span className="place-card-text1">{props.description}</span>
         <span className="place-card-text1">Looking for: <span className="place-card-text">{props.eventPax}</span> volunteers</span>
-        <button className='button-40'onClick={() => setButtonPopup(true)}>Download Certificate</button>
-          <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-            {props.displayData}
-            <CertificateDownloader activityName={activityName}/>
-            </Popup>
+        {props.isApproved ? (
+              <>
+                <p>Certificate Approved - Ready for Download</p>
+                <button className='button-40'onClick={() => setButtonPopup(true)}>Download Certificate</button>
+                <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                  {props.displayData}
+                  <CertificateDownloader activityName={activityName}/>
+                  </Popup>
+                </>
+            ) : props.hasRequested ? (
+                <p>Certificate Request Pending</p>
+            ) : (
+                <button className='button-40' onClick={handleRequestCertificateClick}>Request Certificate</button>
+                
+            )}
+
       </div>
     </div>
   );
+
+
 };
 
 PlaceCard.defaultProps = {
@@ -52,11 +73,22 @@ PlaceCard.defaultProps = {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
 };
 
-PlaceCard.propTypes = {
+PlaceCard.propTypes = {/*
   image: PropTypes.string,
   imageAlt: PropTypes.string,
   city: PropTypes.string,
   description: PropTypes.string,
+  onRequestCertificate: PropTypes.func.isRequired,
+  hasRequested: PropTypes.bool.isRequired,
+  isApproved: PropTypes.bool.isRequired,*/
+  image: PropTypes.string,
+  imageAlt: PropTypes.string,
+  city: PropTypes.string,
+  description: PropTypes.string,
+  eventPax: PropTypes.string, // Ensure this matches the expected type (string or number?)
+  onRequestCertificate: PropTypes.func,
+  hasRequested: PropTypes.bool,
+  isApproved: PropTypes.bool
 };
 
 export default PlaceCard;

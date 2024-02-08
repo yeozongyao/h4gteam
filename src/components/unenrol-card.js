@@ -4,13 +4,14 @@ import PropTypes from "prop-types";
 
 import OutlineButton from "./outline-button";
 import "./event-card.css";
-import Enrol from "./Enrol.js";
+import Unenrol from "./Unenrol.js";
 import { useState } from "react";
 import { useAuth } from "../firebase";
 
-const EventCard = (props) => {
+const UnenrolCard = (props) => {
   const [buttonPopup, setButtonPopup] = useState(false);
   const activityName = props.city;
+  
   return (
     <div className="place-card-container">
       <img
@@ -25,12 +26,12 @@ const EventCard = (props) => {
           Looking for: <span className="place-card-text">{props.eventPax}</span>{" "}
           volunteers
         </span>
-        <button className="button-40" 
-        disabled={props.eventPax === 0}
-        onClick={() => setButtonPopup(true)}>
-          {props.eventPax === 0 ? "No more slots" : "Enrol for Event Now"}          
+        <button className="button-40" onClick={() => setButtonPopup(true)}>
+          Unenrol from Event
+          
         </button>
-        <Enrol
+        
+        <Unenrol
           trigger={buttonPopup}
           setTrigger={setButtonPopup}
           eventId={props.eventId}
@@ -41,7 +42,7 @@ const EventCard = (props) => {
   );
 };
 
-EventCard.defaultProps = {
+UnenrolCard.defaultProps = {
   image:
     "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=1000",
   imageAlt: "image",
@@ -50,11 +51,11 @@ EventCard.defaultProps = {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.",
 };
 
-EventCard.propTypes = {
+UnenrolCard.propTypes = {
   image: PropTypes.string,
   imageAlt: PropTypes.string,
   city: PropTypes.string,
   description: PropTypes.string,
 };
 
-export default EventCard;
+export default UnenrolCard;

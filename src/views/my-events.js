@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import { useAuth } from "../firebase";
-import EventCard from '../components/event-card';
+import UnenrolCard from '../components/unenrol-card';
 import "../css/activities-page.css";
 import NavBar from "../components/NavBar";
 import "../css/my-events.css"; // Ensure this is the correct path to your CSS file
@@ -51,7 +51,7 @@ const MyEvents = () => {
             </div>
             <div className="landing-page-cards-container">
                 {myEvents.map(event => (
-                    <EventCard eventId={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax} />
+                    <UnenrolCard eventId={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax} />
                 ))}
             </div>
         </div>
