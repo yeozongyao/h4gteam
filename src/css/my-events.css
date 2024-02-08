@@ -4,3 +4,7 @@
     align-items: center; /* Center vertically */
     height: 100px; /* Adjust the height as needed */
   }
+
+  .my-events {
+    background-color: rgb(165, 239, 225);
+  }

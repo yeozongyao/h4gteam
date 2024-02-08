@@ -7,6 +7,10 @@
     flex-direction: column;
 }
 
+.signin-newcontainer {
+  justify-content: center;
+}
+
 #fields {
     margin-bottom: 20px;
 }
