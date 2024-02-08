@@ -1,6 +1,7 @@
 import React from "react";
 import "./NavBar.css";
 import profileIcon from "./profile.png";
+import { Colors } from "chart.js";
 
 export default function NavBar({ name, currentUser }) {
   const isAdmin = currentUser?.email === "admin@gmail.com";
@@ -8,11 +9,14 @@ export default function NavBar({ name, currentUser }) {
   return (
     <div className="landing-page-top-container-navbar-edition">
       <nav data-role="Header" className="landing-page-navbar">
-        <h1>{name}</h1>
+        <h1 className="headerName">{name}</h1>
         <div className="landing-page-right-side">
           <div className="landing-page-links-container">
             {isAdmin && (
               <>
+                <a href="/admindashboard" className="landing-page-text">
+                  Dashboard
+                </a>             
                 <a href="/admincert" className="landing-page-text">
                   Admin Cert
                 </a>

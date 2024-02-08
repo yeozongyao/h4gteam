@@ -20,6 +20,7 @@ import AdminAddEvents from "./views/admin-add-events";
 import ViewProfilePage from "./views/viewprofile";
 import RouteGuard  from "./components/RouteGuard";
 import MyEvents from "./views/my-events";
+import Dashboard from "./views/dashboard";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route component={signin} exact path="/signup" />
         <Route component={AdminAddEvents} exact path="/addevents" />
         <Route component={MyEvents} exact path="/myevents" />
+        <Route component={Dashboard} exact path="/admindashboard" />
         <Route component={NotFound} path="**" />
 
         <Route
