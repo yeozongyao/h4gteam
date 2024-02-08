@@ -7,7 +7,9 @@ h1 {
 .landing-page-top-container-navbar-edition {
     background-color: rgb(16, 163, 163); /* Teal color for the navbar */
     padding: 5px 20px; /* Reduced top and bottom padding */
-    height: 100px;
+    height: 50px;
+    max-height: 130px;
+    display: flex;
   }
 
 .headerName {
@@ -23,6 +25,7 @@ h1 {
   .landing-page-right-side {
     display: flex;
     align-items: center;
+
   }
   
   .landing-page-links-container {

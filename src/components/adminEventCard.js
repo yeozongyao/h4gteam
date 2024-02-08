@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 //import OutlineButton from "./outline-button";
 //import { useState } from "react";
 import { useAuth } from "../firebase";
-//import "./AdminEventCard.css";
+import "../css/my-events.css";
 
 const AdminEventCard = (props) => {
   const [showDetails, setShowDetails] = useState(false);

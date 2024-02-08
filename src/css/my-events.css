@@ -8,3 +8,7 @@
   .my-events {
     background-color: rgb(165, 239, 225);
   }
+
+  .admin-event-card {
+    margin-top: 20px;
+  }
