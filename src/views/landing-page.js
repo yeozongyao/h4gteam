@@ -16,20 +16,19 @@ import {
 } from "../util";
 import EventSimilarity from "../components/EventSimilarity";
 import Footer from "../components/footer";
-
-const Dot = ({ color }) => {
-  const style = {
-    height: 25,
-    width: 25,
-    margin: "0px 10px",
-    backgroundColor: color,
-    borderRadius: "50%",
-    display: "inline-block",
-  };
-  return <span style={style}></span>;
-};
+import { useHistory } from "react-router-dom";
 
 const LandingPage = () => {
+  const history = useHistory();
+
+  const handleSignupLink = () => {
+    history.push("/signup");
+  }
+  
+  const handleViewEvents = () => {
+    history.push("/act")
+  }
+
   const [colors, setColors] = useState([{ name: "Loading..." }]);
   const currentUser = auth.currentUser; // Get the current user
   useEffect(
@@ -58,10 +57,10 @@ const LandingPage = () => {
               </p>
             </div>
             <div className="button1">
-              <button className="button2">
+              <button className="button2" onClick={handleViewEvents}>
                 <span>View Our Events</span>
               </button>
-              <button className="button3">
+              <button className="button3" onClick={handleSignupLink}>
                 <span>Sign up as a volunteer now!</span>
               </button>
             </div>
