@@ -11,7 +11,7 @@ const ActivitiesPage = () => {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, "EventsTest"), (snapshot) =>
-      setEvents(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      setEvents(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id, des: doc.description})))
     );
     return () => unsubscribe();
   }, []);
@@ -23,7 +23,7 @@ const ActivitiesPage = () => {
       </div>
       <div className="landing-page-cards-container">
         {events.map((event) => (
-          <EventCard eventId={event.id} city={event.name} description={event.description} image={event.image} eventPax={event.eventPax}/>
+          <EventCard eventId={event.id} city={event.name} des={event.des} image={event.image} eventPax={event.eventPax}/>
         
         ))}
       </div>

@@ -28,6 +28,7 @@ const ProfilesPage = () => {
     availability: "",
     isAdmin: false,
     enrolledEvents: [],
+    MLData: "",
   });
 
   const currentUser = profile;
