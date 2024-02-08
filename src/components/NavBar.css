@@ -9,6 +9,10 @@ h1 {
     padding: 5px 20px; /* Reduced top and bottom padding */
     height: 110px;
   }
+
+.headerName {
+  color:white;
+}
   
   .landing-page-navbar {
     display: flex;
