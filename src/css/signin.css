@@ -5,10 +5,16 @@
     min-height: 100vh;
     align-items: center;
     flex-direction: column;
+
 }
 
 .signin-newcontainer {
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center children horizontally in the column */
+  justify-content: center; /* Center children vertically in the column */
+  width: 100%; /* Take the full width of the parent */
+  margin-top: 30px;
 }
 
 #fields {

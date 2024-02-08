@@ -10,6 +10,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin-left: 150px;
+  margin: 0 auto;
 }
 .admin-event-card {
   display: flex;
@@ -33,4 +34,11 @@
 
 .eventDiv-container {
   margin-bottom: 20%;
+}
+
+.card-container {
+
+  display: inline-block; /* Allows cards to sit side-by-side */
+  vertical-align: top; /* Aligns the cards at the top */
+  width: calc(33.333% - 40px); /* Subtract margin from the total width for 3 cards in a row */
 }

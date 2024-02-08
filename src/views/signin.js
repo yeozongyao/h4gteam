@@ -3,6 +3,7 @@ import { signup, useAuth, logout, login, } from "../firebase";
 import { useHistory } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import "../css/signin.css"; // Ensure this is the correct path to your CSS file
+import Footer from "../components/footer";
 
 
 export default function signin() {
@@ -46,6 +47,7 @@ export default function signin() {
   }
 
   return (
+    <div>
     <div className="signin-container">
         <NavBar name="Account" currentUser={currentUser} />
         <div className="signin-newcontainer">
@@ -101,7 +103,9 @@ export default function signin() {
       </div>
           
         </div>
-
+        
+    </div>
+    <Footer />
     </div>
   );
 }
