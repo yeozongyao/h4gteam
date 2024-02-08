@@ -58,7 +58,31 @@
 
 .blueheart {
   margin-left: 50px;
+  width: 40px;
+  height: auto;
 }
+
+.parting-container {
+  background-color: rgb(107, 196, 196);
+  width: 100%; /* Ensure it takes up the full width */
+  height: 150px;
+  padding: 20px; /* Add padding for spacing */
+  color: white; /* Set text color */
+  margin-top: 20px;
+}
+
+/* Optional: Center the text horizontally */
+.parting-container {
+  text-align: center;
+}
+
+.recommend2 {
+  font-size: 20px; /* Set the font size */
+  font-weight: bold; /* Make the text bold */
+  text-align: center; /* Center-align the text */
+  margin-top: 25px;
+}
+
 
 
 
