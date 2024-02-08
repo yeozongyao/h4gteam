@@ -31,7 +31,7 @@ const AdminEvents = () => {
     <>
     <div className="adminCert-main-div">
       <NavBar name="Admin " currentUser={currentUser} />
-      <div className="admin-list-of-events">
+      <div className="admin-events-list-of-events">
         {events.map((event) => (
           <AdminEventCard
             eventId={event.id}
