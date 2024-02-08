@@ -6,6 +6,7 @@ import SolidButton from "../components/solid-button";
 import PlaceCard from "../components/place-card";
 import "../css/landing-page.css";
 import NavBar from "../components/NavBar";
+import blueheart from '../images/blueheart.png'; // Adjust the path as needed
 import { onSnapshot, collection, addDoc } from "firebase/firestore";
 import {
   handleNew,
@@ -45,7 +46,40 @@ const LandingPage = () => {
         <meta property="og:title" content="Travel Agency" />
       </Helmet>
       <NavBar name="HackforGood"/>
-     <EventSimilarity/>
+      <div className="main">
+          <div className="hero-section">
+            <div className="header">
+              <h1 className="difference-heading">You can make a difference</h1>
+              <p className="thecaption">
+                VOLUNASIA is that moment when you forget you&apos;re
+                volunteering to help change lives, because it&apos;s changing
+                yours. Come find your volunasia with us!
+              </p>
+            </div>
+            <div className="button1">
+              <button className="button2">
+                <span>View Our Events</span>
+              </button>
+              <button className="button3">
+                <span>Sign up as a volunteer now!</span>
+              </button>
+            </div>
+          </div>
+          <div className="blueheart">
+            <img src={blueheart} alt="blueheart" />
+          </div>
+        </div>
+        <div className="partingContainer">
+          Here is how you can help! Events recommended for you!!
+        </div>
+        <div className="similar-events-container">
+        <EventSimilarity/>
+        </div>
+
+          
+        
+
+     
       <div className="landing-page-top-container">
         <div className="landing-page-hero">
           <div className="landing-page-content-container">
@@ -178,3 +212,4 @@ const LandingPage = () => {
 };
 
 export default LandingPage;
+
