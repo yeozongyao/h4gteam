@@ -8,6 +8,7 @@ import {
   where,
   getDocs,
   setDoc,
+  getDoc,
 } from "firebase/firestore";
 import { updateDoc, doc } from "firebase/firestore"; // Import Firestore update functions
 import { useAuth } from "../firebase";
@@ -60,24 +61,26 @@ function Enrol(props) {
           });
           console.log("can add user to event");
 
-          // Combine MLData using Event Description
-          // const updatedMLData = userData.MLData ? `${userData.MLData} ${eventDescription}` : eventDescription;
+          const eventDocRef = doc(db, "EventsTest", props.eventId);
+          const userDocRef = doc(db, "User", userId);
+          const eventDescription = (await getDoc(eventDocRef)).data().description;
 
-          // Update user profile ML Data with the enrolled event description
-          // await updateDoc(
-          //   userDocRef,
-          //   { MLData: updatedMLData },
-          // );
+          // Combine MLData using Event Description
+          const updatedMLData = userData.MLData ? `${userData.MLData} ${eventDescription}` : eventDescription;
 
           // Close the popup after enrolment
           props.setTrigger(false);
 
-          const eventDocRef = doc(db, "EventsTest", props.eventId);
           const eventPax = props.eventPax;
           await setDoc(
             eventDocRef,
             { eventPax: eventPax - 1 },
             { merge: true }
+          );
+
+          await updateDoc(
+            userDocRef,
+            { MLData: updatedMLData },
           );
 
           alert("YAY :) You have successfully enrolled for the event!");

@@ -13,6 +13,7 @@ import {
   handleDelete,
   handleQueryDelete,
 } from "../util";
+import EventSimilarity from "../components/EventSimilarity";
 
 const Dot = ({ color }) => {
   const style = {
@@ -44,6 +45,7 @@ const LandingPage = () => {
         <meta property="og:title" content="Travel Agency" />
       </Helmet>
       <NavBar name="HackforGood"/>
+     <EventSimilarity/>
       <div className="landing-page-top-container">
         <div className="landing-page-hero">
           <div className="landing-page-content-container">

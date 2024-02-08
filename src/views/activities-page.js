@@ -23,7 +23,7 @@ const ActivitiesPage = () => {
       </div>
       <div className="landing-page-cards-container">
         {events.map((event) => (
-          <EventCard eventId={event.id} city={event.name} des={event.des} image={event.image} eventPax={event.eventPax}/>
+          <EventCard eventId={event.id} city={event.name} des={event.description} image={event.image} eventPax={event.eventPax}/>
         
         ))}
       </div>
