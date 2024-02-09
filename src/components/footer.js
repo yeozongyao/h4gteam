@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="landing-page-links-container2">
           <div className="landing-page-container1">
             <a
-              href="https://www.bigatheart.org/"
+              href="https://gdsc.community.dev/national-university-of-singapore-singapore/"
               target="_blank"
               rel="noreferrer noopener"
               className="landing-page-link05"
@@ -19,7 +19,7 @@ const Footer = () => {
           </div>
           <div className="landing-page-container2">
             <a
-              href="https://example.com"
+              href="https://www.bigatheart.org/"
               target="_blank"
               rel="noreferrer noopener"
               className="landing-page-link09"
@@ -49,7 +49,7 @@ const Footer = () => {
             </a>
             {/* Facebook */}
             <a
-              href="https://facebook.com"
+              href="https://facebook.com/gdsc"
               target="_blank"
               rel="noreferrer noopener"
               className="landing-page-link14"
@@ -63,7 +63,7 @@ const Footer = () => {
             </a>
             {/* Twitter */}
             <a
-              href="https://twitter.com"
+              href="https://twitter.com/gdsc"
               target="_blank"
               rel="noreferrer noopener"
               className="landing-page-link15"
