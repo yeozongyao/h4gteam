@@ -19,6 +19,8 @@ We firmly believe that VolunteerConnect fills a critical void within the volunte
 3. Run the following command to install dependencies $ npm install
 4. Run the following command to start on local server $ npm start
 
+   Alternatively, access the end product @ https://volunteerconnectsg.netlify.app/
+
 ## How to use the project   
 
 To begin using VolunteerConnect, start by signing up or logging into your account on the platform. Once logged in, explore the diverse range of volunteering opportunities available, utilizing our AI-powered recommendation system to discover activities aligned with your interests and skills. Enroll in the activities that appeal to you, managing your schedule efficiently through your volunteer profile. When attending volunteering events, engage wholeheartedly and contribute positively to the cause. If you choose, request certificates for completed activities through VolunteerConnect, streamlining the process with our platform. For organizations or beneficiaries, create an account to access invaluable dashboard features for insights into user demographics, feedback, and event trends. Monitor volunteer participation, track their involvement, and simplify certificate issuance processes through VolunteerConnect. Let's start our volunteering journey today with VolunteerConnect and play your part in building a better tomorrow for our communities.
