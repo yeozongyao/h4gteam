@@ -9,6 +9,7 @@ import { useState } from "react";
 import CertificateDownloader from "../components/Certdownload";
 import enrollInEvent from "../views/enrollInEvent";
 import MyForm from "./Form.js";
+import FeedbackForm from "./FeedbackForm.js";
 
 const PlaceCard = (props) => {
   console.log({ props });
@@ -58,7 +59,7 @@ const PlaceCard = (props) => {
                 </div>
                 <Popup trigger={secondButtonPopup} setTrigger={setSecondButtonPopup}>
                   <div>
-                    <h1>Hi</h1>
+                  <FeedbackForm eventName={activityName}/>
                   </div>
                   </Popup>
                 </>
@@ -66,8 +67,13 @@ const PlaceCard = (props) => {
               <div>
                 <p>Certificate Request Pending</p>
                 <div className="button-division">
-                <button className="feedback-button" onClick={() => setSecondButtonPopup(true)}>Leave a feedback</button>
+                <button className="feedback-button" onClick={() => setSecondButtonPopup(true)} >Leave a feedback</button>
                 </div>
+                <Popup trigger={secondButtonPopup} setTrigger={setSecondButtonPopup}>
+                  <div>
+                  <FeedbackForm eventName={activityName}/>
+                  </div>
+                  </Popup>
               </div>
             ) : (
                 <button className='button-40' onClick={handleRequestCertificateClick}>Request Certificate</button>
