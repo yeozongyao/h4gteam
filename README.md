@@ -16,8 +16,12 @@ We firmly believe that VolunteerConnect fills a critical void within the volunte
 ### Clone the GitHub Repository
 1. Open your terminal.
 2. Navigate to the directory where you want to clone the repository.
-3. Run the following command to install dependencies $ npm install
-4. Run the following command to start on local server $ npm start
+
+### Install Dependencies
+3. Run $ npm install
+
+### Start on Local Server
+4. Run $ npm start
 
 ## How to use the project   
 
