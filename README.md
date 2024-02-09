@@ -13,15 +13,11 @@ We firmly believe that VolunteerConnect fills a critical void within the volunte
 
 ## How to Install and Run the Project
 
-### Clone the GitHub Repository
 1. Open your terminal.
 2. Navigate to the directory where you want to clone the repository.
-
-### Install Dependencies
-3. Run $ npm install
-
-### Start on Local Server
-4. Run $ npm start
+3. Clone the repository: $ git clone https://github.com/yourusername/hack4good.git
+3. Run the following command to install dependencies $ npm install
+4. Run the following command to start on local server $ npm start
 
 ## How to use the project   
 
