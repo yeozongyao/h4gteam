@@ -35,7 +35,7 @@ function FeedbackList({ eventName }) {
       <br/>
       <ul className='gray'>
         {feedbackList.map((feedback, index) => (
-          <li key={index}>{feedback}</li>
+          <li className='gray' key={index}>{feedback}</li>
         ))}
       </ul>
       <br/>
@@ -44,7 +44,7 @@ function FeedbackList({ eventName }) {
       <br/>
       <ul className='gray'>
         {learningExpList.map((learningExp, index) => (
-          <li key={index}>{learningExp}</li>
+          <li className='gray' key={index}>{learningExp}</li>
         ))}
       </ul>
       <br/>
@@ -53,7 +53,7 @@ function FeedbackList({ eventName }) {
       <br/>
       <ul className='gray'>
         {futureRecomList.map((futureRecom, index) => (
-          <li key={index}>{futureRecom}</li>
+          <li className='gray' key={index}>{futureRecom}</li>
         ))}
       </ul>
       <br/>
