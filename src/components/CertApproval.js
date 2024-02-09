@@ -46,11 +46,13 @@ const CertApprovalComponent = ({ requestId, userEmail, userName, eventId, eventN
       <p>Event Name: {eventName}</p>   
       </div>
     </div>
+    <div className='app-but'>
     <div className="approval-button">
       <button className='button-40' onClick={approveCertificate} disabled={isLoading}>
         {isLoading ? 'Approving...' : 'Approve Certificate'}
       </button>
       {error && <p className="error-message">{error}</p>}
+    </div>
     </div>
     </>
   );
