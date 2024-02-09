@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { useAuth } from "../firebase";
 import "../css/my-events.css";
 import Popup from "./Popup";
+import FeedbackList from "./FeedbackList";
 
 const AdminEventCard = (props) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -56,6 +57,7 @@ const AdminEventCard = (props) => {
         <button onClick={() => setSecondButtonPopup(true)} >View feedback</button>
                 <Popup trigger={secondButtonPopup} setTrigger={setSecondButtonPopup}>
                   <div>
+                    <FeedbackList eventName={props.city}/>  
                   </div>
                 </Popup>
       </div>
