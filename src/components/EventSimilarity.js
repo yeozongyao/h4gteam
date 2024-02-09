@@ -191,7 +191,7 @@ const EventSimilarity = ({ currentUser }) => {
     // Extract event names from topSimilarEvents
     const eventNames = similarityResults.map(result => result.id);
     // Filter events based on extracted event names
-    const filteredEvents = events.filter(event => eventNames.includes(event.id));
+    const filteredEvents = events.filter(event => eventNames.includes(event.id)).slice(0,3);
     // Set filtered events to finalSimilarEvents
     setFinalSimilarEvents(filteredEvents);
   }, [similarityResults, events]);
