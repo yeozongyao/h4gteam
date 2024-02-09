@@ -8,11 +8,13 @@ import Popup from "./Popup.js";
 import { useState } from "react";
 import CertificateDownloader from "../components/Certdownload";
 import enrollInEvent from "../views/enrollInEvent";
+import MyForm from "./Form.js";
 
 const PlaceCard = (props) => {
   console.log({ props });
 
   const [buttonPopup, setButtonPopup] = useState(false);
+  const [secondButtonPopup, setSecondButtonPopup] = useState(false);
   const activityName = props.city;
   const handleEnrollClick = async () => {
     try {
@@ -44,14 +46,29 @@ const PlaceCard = (props) => {
         {props.isApproved ? (
               <>
                 <p>Certificate Approved - Ready for Download</p>
+                <div className="download-division">
                 <button className='button-40'onClick={() => setButtonPopup(true)}>Download Certificate</button>
+                </div>
                 <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
                   {props.displayData}
                   <CertificateDownloader activityName={activityName}/>
                   </Popup>
+                  <div className="button-division">
+                <button className="feedback-button" onClick={() => setSecondButtonPopup(true)} >Leave a feedback</button>
+                </div>
+                <Popup trigger={secondButtonPopup} setTrigger={setSecondButtonPopup}>
+                  <div>
+                    <h1>Hi</h1>
+                  </div>
+                  </Popup>
                 </>
             ) : props.hasRequested ? (
+              <div>
                 <p>Certificate Request Pending</p>
+                <div className="button-division">
+                <button className="feedback-button" onClick={() => setSecondButtonPopup(true)}>Leave a feedback</button>
+                </div>
+              </div>
             ) : (
                 <button className='button-40' onClick={handleRequestCertificateClick}>Request Certificate</button>
                 
