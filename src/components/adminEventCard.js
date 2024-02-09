@@ -6,9 +6,11 @@ import PropTypes from "prop-types";
 //import { useState } from "react";
 import { useAuth } from "../firebase";
 import "../css/my-events.css";
+import Popup from "./Popup";
 
 const AdminEventCard = (props) => {
   const [showDetails, setShowDetails] = useState(false);
+  const [secondButtonPopup, setSecondButtonPopup] = useState(false);
 
   const toggleDetails = () => {
     setShowDetails(!showDetails);
@@ -48,6 +50,14 @@ const AdminEventCard = (props) => {
         <button className="admin-event-details-button" onClick={toggleDetails}>
           {showDetails ? "Hide Details" : "Show Details"}
         </button>
+
+        
+
+        <button onClick={() => setSecondButtonPopup(true)} >View feedback</button>
+                <Popup trigger={secondButtonPopup} setTrigger={setSecondButtonPopup}>
+                  <div>
+                  </div>
+                </Popup>
       </div>
     </div>
   );
