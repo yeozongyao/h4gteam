@@ -1,4 +1,9 @@
 .HeaderOne {
     font-weight: Bold;
     color: black;
+    text-decoration: underline;
+}
+
+.gray {
+    color: black;
 }

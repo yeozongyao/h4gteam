@@ -32,25 +32,31 @@ function FeedbackList({ eventName }) {
   return (
     <div>
       <h2 className='HeaderOne'>Feedback</h2>
-      <ul>
+      <br/>
+      <ul className='gray'>
         {feedbackList.map((feedback, index) => (
-          <li key={index}><strong>{feedback}</strong></li>
+          <li key={index}>{feedback}</li>
         ))}
       </ul>
+      <br/>
       
       <h2 className='HeaderOne'>Learning Experiences</h2>
-      <ul>
+      <br/>
+      <ul className='gray'>
         {learningExpList.map((learningExp, index) => (
-          <li key={index}><strong>{learningExp}</strong></li>
+          <li key={index}>{learningExp}</li>
         ))}
       </ul>
+      <br/>
       
       <h2 className='HeaderOne'>Recommendations</h2>
-      <ul>
+      <br/>
+      <ul className='gray'>
         {futureRecomList.map((futureRecom, index) => (
-          <li key={index}><strong>{futureRecom}</strong></li>
+          <li key={index}>{futureRecom}</li>
         ))}
       </ul>
+      <br/>
     </div>
   );
 }
