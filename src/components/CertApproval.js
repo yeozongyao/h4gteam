@@ -36,9 +36,15 @@ const CertApprovalComponent = ({ requestId, userEmail, userName, eventId, eventN
         src={imageLink}
         className="approval-card-image"
       />
+      <div className='username'>
       <p>User Name: {userName}</p>
+      </div>
+      <div className='email'>
       <p>User: {userEmail}</p>
-      <p>Event Name: {eventName}</p>
+      </div>
+      <div className='eventName'>
+      <p>Event Name: {eventName}</p>   
+      </div>
     </div>
     <div className="approval-button">
       <button className='button-40' onClick={approveCertificate} disabled={isLoading}>

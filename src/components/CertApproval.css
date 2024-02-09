@@ -21,3 +21,18 @@
     vertical-align: top; /* Aligns the cards at the top */
     padding: 20px;
   }
+  
+  .username {
+    margin-top: 10px;
+    color:black
+  }
+
+  .email {
+    margin-top: 5px;
+    color:black;
+  }
+
+  .eventName {
+    margin-top: 5px;
+    color:black
+  }
