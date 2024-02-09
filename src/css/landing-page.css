@@ -15,7 +15,7 @@
   padding-left: var(--dl-space-space-fiveunits);
   flex-direction: row;
   justify-content: left;
-  padding-left: 50px;
+  padding-left: 70px;
 }
 .hero-section {
   gap: var(--dl-space-space-threeunits);
@@ -57,7 +57,7 @@
 }
 
 .blueheart {
-  margin-left: 50px;
+  margin-left: 70px;
   width: 40px;
   height: auto;
 }
