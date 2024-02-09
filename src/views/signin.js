@@ -51,7 +51,7 @@ export default function signin() {
     <div className="signin-container">
         <NavBar name="Account" currentUser={currentUser} />
         <div className="signin-newcontainer">
-        <div>Currently logged in as: {currentUser?.email} </div>
+        <div className="logged-in-text">Currently logged in as: {currentUser?.email} </div>
 
         <br></br>
         {!currentUser && (

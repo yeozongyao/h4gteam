@@ -14,9 +14,13 @@
   align-items: center; /* Center children horizontally in the column */
   justify-content: center; /* Center children vertically in the column */
   width: 100%; /* Take the full width of the parent */
-  margin-top: 30px;
+  margin-top: 100px;
 }
 
+.logged-in-text {
+  font-size: 20px;
+  font-family:monospace;
+}
 #fields {
     margin-bottom: 20px;
 }
